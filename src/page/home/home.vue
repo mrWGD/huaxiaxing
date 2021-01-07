@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <img class="logo" :src="require('@/assets/images/logo.png')" />
+
     <head-top signin-up="home">
       <span slot="logo" class="head_logo" @click="reload">华夏星元素</span>
     </head-top>
@@ -60,13 +62,13 @@
 </template>
 
 <script>
-import headTop from "../../components/header/head";
-import { cityGuess, hotcity, groupcity } from "../../service/getData";
+import headTop from "@/components/header/head";
+import { cityGuess, hotcity, groupcity } from "@/service/getData";
 
 export default {
   data() {
     return {
-      guessCity: "", //当前城市
+      guessCity: "青岛", //当前城市
       guessCityid: "", //当前城市id
       hotcity: [], //热门城市列表
       groupcity: {}, //所有城市列表
@@ -75,15 +77,33 @@ export default {
 
   mounted() {
     // 获取当前城市
-    cityGuess().then((res) => {
-      this.guessCity = res.name;
-      this.guessCityid = res.id;
-    });
+    cityGuess()
+      .then((res) => {
+        this.guessCity = res.name;
+        this.guessCityid = res.id;
+      })
+      .then(() => {
+        this.guessCity = "青岛";
+        this.guessCityid = 1;
+      });
 
     //获取热门城市
-    hotcity().then((res) => {
-      this.hotcity = res;
-    });
+    hotcity()
+      .then((res) => {
+        this.hotcity = res;
+      })
+      .then(() => {
+        this.hotcity = [
+          { id: "0", name: "北京" },
+          { id: "1", name: "青岛" },
+          { id: "2", name: "天津" },
+          { id: "3", name: "南京" },
+          { id: "4", name: "杭州" },
+          { id: "5", name: "重庆" },
+          { id: "6", name: "广州" },
+          { id: "7", name: "深圳" },
+        ];
+      });
 
     //获取所有城市
     groupcity().then((res) => {
@@ -122,9 +142,16 @@ export default {
 <style lang="scss" scoped>
 @import "../../style/mixin";
 .home {
-  background: url("../../assets/images/logo.png") no-repeat fixed center;
-  background-size: 100%;
+  width: 100%;
+  img.logo {
+    position: fixed;
+    display: block;
+    width: 362px;
+    height: 260px;
+    margin: 200px auto;
+  }
 }
+
 .head_logo {
   left: 0.4rem;
   font-weight: 400;

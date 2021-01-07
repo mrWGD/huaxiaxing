@@ -4,8 +4,11 @@ import routes from './router/router'
 import store from './store/'
 import {routerMode} from './config/env'
 import './config/rem'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(VueRouter)
+Vue.use(ElementUI)
 const router = new VueRouter({
 	routes,
 	mode: routerMode,

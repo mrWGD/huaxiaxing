@@ -1,6 +1,6 @@
 <template>
     <div class="loginContainer">
-        <head-top :head-title="loginWay? '登录':'密码登录'" goBack="true">
+        <head-top :head-title="loginWay? '登录':'会员登录'" goBack="true">
             <!-- <div slot="changeLogin" class="change_login" @click="changeLoginWay">{{loginWay? "密码登录":"短信登录"}}</div> -->
         </head-top>
         <form class="loginForm" v-if="loginWay">
@@ -15,15 +15,14 @@
         </form>
         <form class="loginForm" v-else>
             <section class="input_container">
-                <input type="text" placeholder="账号" v-model.lazy="userAccount">
+                <input type="text" placeholder="会员姓名" v-model.lazy="userAccount">
             </section>
             <section class="input_container">
-                <input v-if="!showPassword" type="password" placeholder="密码"  v-model="passWord">
-                <input v-else type="text" placeholder="密码"  v-model="passWord">
+                <input v-if="!showPassword" type="password" placeholder="会员手机号"  v-model="passWord">
+                <input v-else type="text" placeholder="会员手机号"  v-model="passWord">
                 <div class="button_switch" :class="{change_to_text: showPassword}">
                     <div class="circle_button" :class="{trans_to_right: showPassword}" @click="changePassWordType"></div>
-                    <span>abc</span>
-                    <span>...</span>
+                    <span>on..off</span>
                 </div>
             </section>
             <section class="input_container captcha_code_container">
@@ -38,13 +37,10 @@
             </section>
         </form>
         <p class="login_tips">
-            温馨提示：未注册过的账号，登录时将自动注册
-        </p>
-        <p class="login_tips">
-            注册过的用户可凭账号密码登录
+            温馨提示：必须使用华夏星元素登记的姓名和手机号
         </p>
         <div class="login_container" @click="mobileLogin">登录</div>
-        <router-link to="/forget" class="to_forget" v-if="!loginWay">重置密码？</router-link>
+        <!-- <router-link to="/forget" class="to_forget" v-if="!loginWay">重置密码？</router-link> -->
         <alert-tip v-if="showAlert" :showHide="showAlert" @closeTip="closeTip" :alertText="alertText"></alert-tip>
     </div>
 </template>
@@ -152,11 +148,11 @@
                 }else{
                     if (!this.userAccount) {
                         this.showAlert = true;
-                        this.alertText = '请输入手机号/邮箱/用户名';
+                        this.alertText = '请输入会员姓名';
                         return
                     }else if(!this.passWord){
                         this.showAlert = true;
-                        this.alertText = '请输入密码';
+                        this.alertText = '请输入会员手机号';
                         return
                     }else if(!this.codeNumber){
                         this.showAlert = true;
@@ -189,7 +185,7 @@
     @import '../../style/mixin';
 
     .loginContainer{
-        padding-top: 1.95rem;
+        padding-top: 3rem;
         p, span, input{
             font-family: Helvetica Neue,Tahoma,Arial;
         }
@@ -263,7 +259,7 @@
     .login_container{
         margin: 0 .5rem 1rem;
         @include sc(.7rem, #fff);
-        background-color: #4cd964;
+        background-color: #3b95e9;
         padding: .5rem 0;
         border: 1px;
         border-radius: 0.15rem;
