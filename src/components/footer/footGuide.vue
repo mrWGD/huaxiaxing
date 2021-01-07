@@ -21,22 +21,23 @@
 	    	</defs>
     	</svg>
         <section @click = "gotoAddress({path: '/msite', query: {geohash}})" class="guide_item">
-        	<svg class="icon_style">
+            <i class="el-icon-s-home"></i>
+        	<!-- <svg class="icon_style">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('msite') !== -1? '#msiteActive' : '#msite'"></use>
-            </svg>
-            <span>外卖</span>
+            </svg> -->
+            <span>首页</span>
         </section>
         <section @click = "gotoAddress({path: `/search/${geohash}`})" class="guide_item">
         	<svg class="icon_style">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('search') !== -1? '#findActive' : '#find'"></use>
             </svg>
-            <span>搜索</span>
+            <span>动态</span>
         </section>
         <section @click = "gotoAddress('/order')" class="guide_item">
         	<svg class="icon_style">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('order') !== -1? '#orderActive' : '#order'"></use>
             </svg>
-            <span>订单</span>
+            <span>课程</span>
         </section>
         <section @click = "gotoAddress('/profile')" class="guide_item">
         	<svg class="icon_style">

@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <img class="logo" :src="require('@/assets/images/logo.png')" />
-
     <head-top signin-up="home">
       <span slot="logo" class="head_logo" @click="reload">华夏星元素</span>
     </head-top>
@@ -33,6 +31,8 @@
         </router-link>
       </ul>
     </section>
+    <img class="logo" :src="require('@/assets/images/logo.png')" />
+
     <section class="group_city_container">
       <ul class="letter_classify">
         <li
@@ -68,7 +68,7 @@ import { cityGuess, hotcity, groupcity } from "@/service/getData";
 export default {
   data() {
     return {
-      guessCity: "青岛", //当前城市
+      guessCity: "", //当前城市
       guessCityid: "", //当前城市id
       hotcity: [], //热门城市列表
       groupcity: {}, //所有城市列表
@@ -77,33 +77,33 @@ export default {
 
   mounted() {
     // 获取当前城市
-    cityGuess()
-      .then((res) => {
+    cityGuess().then((res) => {
+      if (res.name) {
         this.guessCity = res.name;
         this.guessCityid = res.id;
-      })
-      .then(() => {
+      } else {
         this.guessCity = "青岛";
-        this.guessCityid = 1;
-      });
+        this.guessCityid = 28;
+      }
+    });
 
     //获取热门城市
-    hotcity()
-      .then((res) => {
+    hotcity().then((res) => {
+      if (res.length) {
         this.hotcity = res;
-      })
-      .then(() => {
+      } else {
         this.hotcity = [
-          { id: "0", name: "北京" },
-          { id: "1", name: "青岛" },
-          { id: "2", name: "天津" },
-          { id: "3", name: "南京" },
-          { id: "4", name: "杭州" },
-          { id: "5", name: "重庆" },
-          { id: "6", name: "广州" },
-          { id: "7", name: "深圳" },
+          { id: 0, name: "北京" },
+          { id: 28, name: "青岛" },
+          { id: 2, name: "天津" },
+          { id: 3, name: "南京" },
+          { id: 4, name: "杭州" },
+          { id: 5, name: "重庆" },
+          { id: 6, name: "广州" },
+          { id: 7, name: "深圳" },
         ];
-      });
+      }
+    });
 
     //获取所有城市
     groupcity().then((res) => {

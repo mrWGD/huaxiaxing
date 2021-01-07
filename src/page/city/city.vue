@@ -69,13 +69,14 @@ export default {
   mounted() {
     this.cityid = this.$route.params.cityid;
     //获取当前城市名字
-    currentcity(this.cityid)
-      .then((res) => {
+    currentcity(this.cityid).then((res) => {
+      if (res.name) {
         this.cityname = res.name;
-      })
-      .then((res) => {
+      } else {
         this.cityname = "青岛";
-      });
+      }
+    });
+
     this.initData();
   },
 
@@ -101,20 +102,20 @@ export default {
         searchplace(this.cityid, this.inputVaule)
           .then((res) => {
             this.historytitle = false;
-            this.placelist = res;
+            if (res.length) {
+              this.placelist = res;
+            } else {
+              this.placelist = [
+                {
+                  geohash: "qdhxx",
+                  name: "华夏星元素舞蹈.瑜伽综合艺术中心",
+                  address: "山东省青岛市市北区山东路138号",
+                },
+              ];
+            }
             this.placeNone = res.length ? false : true;
           })
-          .then((res) => {
-            this.historytitle = false;
-            this.placelist = [
-              {
-                geohash: "qdhxx",
-                name: "华夏星元素",
-                address: "山东省青岛市市北区山东路138号",
-              },
-            ];
-            this.placeNone = false;
-          });
+         
       } else {
         this.$message({
           message: "请输入查询内容",

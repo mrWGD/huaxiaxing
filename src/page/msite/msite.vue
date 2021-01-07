@@ -29,49 +29,43 @@
         <span class="title_text ellipsis">{{ msiteTitle }}</span>
       </router-link>
     </head-top>
+    <div class="carousel">
+      <el-carousel trigger="click" height="180px">
+        <el-carousel-item v-for="item in carouselArr" :key="item">
+          <img class="logo" :src="item.url" />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
     <nav class="msite_nav">
-      <div class="swiper-container" v-if="foodTypes.length">
+      <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div
-            class="swiper-slide food_types_container"
-            v-for="(item, index) in foodTypes"
-            :key="index"
-          >
+          <div class="swiper-slide food_types_container">
             <router-link
+              v-for="(item, index) in navTypes"
+              :key="index"
               :to="{
-                path: '/food',
+                path: '',
                 query: {
                   geohash,
-                  title: foodItem.title,
-                  restaurant_category_id: getCategoryId(foodItem.link),
                 },
               }"
-              v-for="foodItem in item"
-              :key="foodItem.id"
               class="link_to_food"
             >
               <figure>
-                <img :src="imgBaseUrl + foodItem.image_url" />
-                <figcaption>{{ foodItem.title }}</figcaption>
+                <i :class="item.icon"></i>
+                <figcaption>{{ item.title }}</figcaption>
               </figure>
             </router-link>
           </div>
         </div>
-        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-pagination"></div> -->
       </div>
-      <img src="../../images/fl.svg" class="fl_back animation_opactiy" v-else />
     </nav>
+
     <div class="shop_list_container">
-      <header class="shop_header">
-        <svg class="shop_icon">
-          <use
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xlink:href="#shop"
-          ></use>
-        </svg>
-        <span class="shop_header_title">附近商家</span>
-      </header>
-      <shop-list v-if="hasGetData" :geohash="geohash"></shop-list>
+      <img class="poster" :src="require('@/assets/images/poster.png')" style="width:100%"/>
+
+      <!-- <shop-list v-if="hasGetData" :geohash="geohash"></shop-list> -->
     </div>
     <foot-guide></foot-guide>
   </div>
@@ -92,7 +86,51 @@ export default {
     return {
       geohash: "", // city页面传递过来的地址geohash
       msiteTitle: "请选择地址...", // msite页面头部标题
-      foodTypes: [], // 食品分类列表
+      carouselArr: [
+        {
+          url: require("@/assets/images/logo.png"),
+        },
+        {
+          url: require("@/assets/images/IMG_16.jpg"),
+        },
+        {
+          url: require("@/assets/images/IMG_20.jpg"),
+        },
+      ],
+      navTypes: [
+        {
+          icon: "el-icon-star-off",
+          title: "师资力量",
+        },
+        {
+          icon: "el-icon-view",
+          title: "学员风采",
+        },
+        {
+          icon: "el-icon-alarm-clock",
+          title: "课堂瞬间",
+        },
+        {
+          icon: "el-icon-trophy",
+          title: "奖项荣誉",
+        },
+        {
+          icon: "el-icon-video-play",
+          title: "活动演出",
+        },
+        {
+          icon: "el-icon-chat-line-round",
+          title: "校园简介",
+        },
+        {
+          icon: "el-icon-school",
+          title: "校园环境",
+        },
+        {
+          icon: "el-icon-phone-outline",
+          title: "联系我们",
+        },
+      ], // 分类列表
       hasGetData: false, //是否已经获取地理位置数据，成功之后再获取商铺列表信息
       imgBaseUrl: "https://fuss10.elemecdn.com", //图片域名地址
     };
@@ -108,7 +146,8 @@ export default {
     this.SAVE_GEOHASH(this.geohash);
     //获取位置信息
     let res = await msiteAddress(this.geohash);
-    this.msiteTitle = res.name ? res.name : "华夏星元素";
+    // this.msiteTitle = res.name ? res.name : "华夏星元素";
+    this.msiteTitle = "华夏星元素";
     // 记录当前经度纬度
     this.RECORD_ADDRESS(res);
 
@@ -165,6 +204,24 @@ export default {
   @include wh(0.9rem, 0.9rem);
   @include ct;
 }
+.carousel {
+  margin-top: 1.95rem;
+  img {
+    display: block;
+    width: 100%;
+    height: 180px;
+  }
+}
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 150px;
+  margin: 0;
+}
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
 .msite_title {
   @include center;
   width: 50%;
@@ -178,10 +235,10 @@ export default {
   }
 }
 .msite_nav {
-  padding-top: 2.1rem;
+  padding-top: 1rem;
   background-color: #fff;
   border-bottom: 0.025rem solid $bc;
-  height: 10.6rem;
+  height: 6.6rem;
   .swiper-container {
     @include wh(100%, auto);
     padding-bottom: 0.6rem;
@@ -198,12 +255,14 @@ export default {
   flex-wrap: wrap;
   .link_to_food {
     width: 25%;
-    padding: 0.3rem 0rem;
+    padding: 0.1rem 0rem;
     @include fj(center);
     figure {
-      img {
-        margin-bottom: 0.3rem;
-        @include wh(1.8rem, 1.8rem);
+      i {
+        text-align: center;
+
+        color: #900;
+        @include wh(1.8rem, 1.2rem);
       }
       figcaption {
         text-align: center;

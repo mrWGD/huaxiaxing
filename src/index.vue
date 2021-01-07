@@ -23,7 +23,7 @@ export default {
       hotcity: [], //热门城市列表
       groupcity: {}, //所有城市列表
       posterShow: true,
-      time: 10,
+      time: 9,
     };
   },
 
