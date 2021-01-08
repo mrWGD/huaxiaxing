@@ -32,7 +32,6 @@
       </ul>
     </section>
     <img class="logo" :src="require('@/assets/images/logo.png')" />
-
     <section class="group_city_container">
       <ul class="letter_classify">
         <li

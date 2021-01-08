@@ -30,7 +30,7 @@
       </router-link>
     </head-top>
     <div class="carousel">
-      <el-carousel trigger="click" height="180px">
+      <el-carousel trigger="click" height="7.8rem">
         <el-carousel-item v-for="item in carouselArr" :key="item">
           <img class="logo" :src="item.url" />
         </el-carousel-item>
@@ -44,7 +44,7 @@
               v-for="(item, index) in navTypes"
               :key="index"
               :to="{
-                path: '',
+                path: item.path,
                 query: {
                   geohash,
                 },
@@ -61,9 +61,14 @@
         <!-- <div class="swiper-pagination"></div> -->
       </div>
     </nav>
-
+    <h3>师资力量</h3>
+    <teacher class="teacher" />
     <div class="shop_list_container">
-      <img class="poster" :src="require('@/assets/images/poster.png')" style="width:100%"/>
+      <img
+        class="poster"
+        :src="require('@/assets/images/poster.png')"
+        style="width: 100%"
+      />
 
       <!-- <shop-list v-if="hasGetData" :geohash="geohash"></shop-list> -->
     </div>
@@ -76,6 +81,7 @@ import { mapMutations } from "vuex";
 // import {imgBaseUrl} from 'src/config/env'
 import headTop from "src/components/header/head";
 import footGuide from "src/components/footer/footGuide";
+import teacher from "src/components/teacher";
 import shopList from "src/components/common/shoplist";
 import { msiteAddress, msiteFoodTypes, cityGuess } from "src/service/getData";
 import "src/plugins/swiper.min.js";
@@ -101,34 +107,42 @@ export default {
         {
           icon: "el-icon-star-off",
           title: "师资力量",
+          path: "/teacher",
         },
         {
           icon: "el-icon-view",
           title: "学员风采",
+          path: "/teacher",
         },
         {
           icon: "el-icon-alarm-clock",
           title: "课堂瞬间",
+          path: "/teacher",
         },
         {
           icon: "el-icon-trophy",
           title: "奖项荣誉",
+          path: "/teacher",
         },
         {
           icon: "el-icon-video-play",
           title: "活动演出",
+          path: "/teacher",
         },
         {
           icon: "el-icon-chat-line-round",
           title: "校园简介",
+          path: "/teacher",
         },
         {
           icon: "el-icon-school",
           title: "校园环境",
+          path: "/teacher",
         },
         {
           icon: "el-icon-phone-outline",
           title: "联系我们",
+          path: "/teacher",
         },
       ], // 分类列表
       hasGetData: false, //是否已经获取地理位置数据，成功之后再获取商铺列表信息
@@ -176,6 +190,7 @@ export default {
   components: {
     headTop,
     shopList,
+    teacher,
     footGuide,
   },
   computed: {},
@@ -209,19 +224,10 @@ export default {
   img {
     display: block;
     width: 100%;
-    height: 180px;
+    height: 7.8rem;
   }
 }
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
-}
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
+
 .msite_title {
   @include center;
   width: 50%;
@@ -250,6 +256,18 @@ export default {
     @include wh(100%, 100%);
   }
 }
+h3 {
+  font: 600 16px/32px "微软雅黑";
+  text-align: center;
+  background: #900;
+  color: #fff;
+  margin: 0.3rem 0;
+}
+.teacher {
+  height: 24.3rem;
+  overflow: hidden;
+  margin-top: -3rem;
+}
 .food_types_container {
   display: flex;
   flex-wrap: wrap;
@@ -260,7 +278,6 @@ export default {
     figure {
       i {
         text-align: center;
-
         color: #900;
         @include wh(1.8rem, 1.2rem);
       }
