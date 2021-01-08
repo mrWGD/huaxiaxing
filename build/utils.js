@@ -25,7 +25,7 @@ exports.cssLoaders = function(options) {
 
         // (which is the case during production build)
         if (options.extract) {
-            return ExtractTextPlugin.extract('vue-style-loader', sourceLoader,'../../')
+            return ExtractTextPlugin.extract('vue-style-loader', sourceLoader)
         } else {
             return ['vue-style-loader', sourceLoader].join('!')
         }
