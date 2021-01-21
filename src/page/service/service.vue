@@ -8,14 +8,14 @@
                 </svg>
                 <span>在线客服</span>
             </a>
-            <a href="tel:10105757" class="service_right">
+            <a href="tel:18353222589" class="service_right">
                 <svg>
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#phone"></use>
                 </svg>
-                <span>在线客服</span>
+                <span>拨打电话</span>
             </a>
         </section>
-        <section class="hot_questions" v-if="serviceData">
+        <section class="hot_questions" v-if="serviceData1">
             <h4 class="qustion_header">热门问题</h4>
             <ul>
                 <li v-for="(item, index) in questionTitle" :key="index" class="question_title" @click="toQuestionDetail(item, index)">

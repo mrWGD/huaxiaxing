@@ -340,7 +340,7 @@ export default {
     background: #fff;
 
     p {
-      width: 12rem;
+      width: 10rem;
       overflow: hidden;
     }
     i {

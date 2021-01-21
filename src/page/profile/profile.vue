@@ -28,7 +28,7 @@
                     </span>
                 </router-link>
             </section>
-            <section class="info-data">
+            <!-- <section class="info-data">
                 <ul class="clear">
                     <router-link to="/balance" tag="li" class="info-data-link">
                         <span class="info-data-top"><b>{{parseInt(balance).toFixed(2)}}</b>元</span>
@@ -43,9 +43,9 @@
                         <span class="info-data-bottom">我的积分</span>
                     </router-link>
                 </ul>
-            </section>
+            </section> -->
             <section class="profile-1reTe">
-                <!-- 我的订单 -->
+                <!-- 随心约课 -->
                 <router-link to='/order' class="myorder">
                     <aside>
                         <svg fill="#4aa5f0">
@@ -53,7 +53,7 @@
                         </svg>
                     </aside>
                     <div class="myorder-div">
-                        <span>我的订单</span>
+                        <span>随心约课</span>
                         <span class="myorder-divsvg">
                             <svg fill="#bbb">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
@@ -77,7 +77,7 @@
                         </span>
                     </div>
                 </a>
-                <!-- 饿了么会员卡 -->
+                <!-- 会员中心 -->
                 <router-link to='/vipcard' class="myorder">
                     <aside>
                         <svg fill="#ffc636">
@@ -85,7 +85,7 @@
                         </svg>
                     </aside>
                     <div class="myorder-div">
-                        <span>饿了么会员卡</span>
+                        <span>会员中心</span>
                         <span class="myorder-divsvg">
                             <svg fill="#bbb">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
@@ -111,7 +111,7 @@
                         </span>
                     </div>
                 </router-link>
-                <!-- 下载饿了么APP -->
+                <!-- 关于 -->
                 <router-link to='/download' class="myorder">
                     <aside>
                         <svg fill="#3cabff">
@@ -119,7 +119,7 @@
                         </svg>
                     </aside>
                     <div class="myorder-div" style="border-bottom:0;">
-                        <span>下载饿了么APP</span>
+                        <span>关于我们</span>
                         <span class="myorder-divsvg">
                             <svg fill="#bbb">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
