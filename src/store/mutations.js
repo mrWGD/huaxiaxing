@@ -125,11 +125,11 @@ export default {
 	[RECORD_USERINFO](state, info) {
 		state.userInfo = info;
 		state.login = true;
-		setStore('user_id', info.user_id);
+		setStore('user_id', info.phone);
 	},
 	//获取用户信息存入vuex
 	[GET_USERINFO](state, info) {
-		if (state.userInfo && (state.userInfo.username !== info.username)) {
+		if (state.userInfo && (state.userInfo.name !== info.name)) {
 			return;
 		};
 		if (!state.login) {
@@ -142,8 +142,8 @@ export default {
 		}
 	},
 	//修改用户名
-	[RETSET_NAME](state,username) {
-		state.userInfo = Object.assign({}, state.userInfo,{username})
+	[RETSET_NAME](state,name) {
+		state.userInfo = Object.assign({}, state.userInfo,{name})
 	},
 	//保存商铺id
 	[SAVE_SHOPID](state, shopid) {

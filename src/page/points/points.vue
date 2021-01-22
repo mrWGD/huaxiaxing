@@ -11,7 +11,7 @@
                     </section>
                 </header>
                 <p class="content_num">
-                    <span>0</span>
+                    <span>99</span>
                     <span>分</span>
                 </p>
                 <div class="promit_button" @click="usePoint">积分兑换商品</div>
@@ -54,7 +54,7 @@
         methods: {
             usePoint(){
                 this.showAlert = true;
-                this.alertText = '快去下单赚取大量积分吧';
+                this.alertText = '暂不支持';
             }
         }
     }
