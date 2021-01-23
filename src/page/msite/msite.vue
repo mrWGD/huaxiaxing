@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="loading">
     <head-top signin-up="msite">
       <router-link :to="'/search/geohash'" class="link_search" slot="search">
         <svg
@@ -61,17 +61,19 @@
         <!-- <div class="swiper-pagination"></div> -->
       </div>
     </nav>
-    <h3>师资力量</h3>
-    <teacher class="teacher" />
-    <div class="shop_list_container">
-      <img
-        class="poster"
-        :src="require('@/assets/images/poster.png')"
-        style="width: 100%"
-      />
-
-      <!-- <shop-list v-if="hasGetData" :geohash="geohash"></shop-list> -->
-    </div>
+    <video
+      src="../../assets/zsg.mp4"
+      controls="controls"
+    ></video>
+    <p class="theme">热门视频集锦</p>
+      <iframe
+      width="100%"
+      height="1000"
+      src="https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend"
+      scrolling="no"
+      　　frameborder="0"
+      style="margin-left: 0px; margin-top: -32px"
+    ></iframe>
     <foot-guide></foot-guide>
   </div>
 </template>
@@ -90,6 +92,7 @@ import "src/style/swiper.min.css";
 export default {
   data() {
     return {
+      loading: true,
       geohash: "", // city页面传递过来的地址geohash
       msiteTitle: "请选择地址...", // msite页面头部标题
       carouselArr: [
@@ -168,6 +171,9 @@ export default {
     this.hasGetData = true;
   },
   mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
     //获取导航食品类型列表
     msiteFoodTypes(this.geohash)
       .then((res) => {
@@ -218,6 +224,7 @@ export default {
   left: 0.8rem;
   @include wh(0.9rem, 0.9rem);
   @include ct;
+  overflow: hidden;
 }
 .carousel {
   margin-top: 1.95rem;
@@ -256,12 +263,15 @@ export default {
     @include wh(100%, 100%);
   }
 }
-h3 {
-  font: 600 16px/32px "微软雅黑";
+p.theme {
+  width: 100%;
+  height: 2.2rem;
+  font: 600 16px/38px "微软雅黑";
   text-align: center;
-  background: #900;
-  color: #fff;
-  margin: 0.3rem 0;
+  background: #fff;
+  color: #000;
+  position: relative;
+  top: 0.5rem;
 }
 .teacher {
   height: 24.3rem;
