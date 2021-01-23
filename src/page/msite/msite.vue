@@ -61,19 +61,17 @@
         <!-- <div class="swiper-pagination"></div> -->
       </div>
     </nav>
-    <video
-      src="../../assets/zsg.mp4"
-      controls="controls"
-    ></video>
+
     <p class="theme">热门视频集锦</p>
       <iframe
       width="100%"
-      height="1000"
+      height="1050"
       src="https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend"
       scrolling="no"
       　　frameborder="0"
-      style="margin-left: 0px; margin-top: -32px"
+      style="margin-left: 0px; margin-top: -38px"
     ></iframe>
+    
     <foot-guide></foot-guide>
   </div>
 </template>
@@ -150,6 +148,7 @@ export default {
       ], // 分类列表
       hasGetData: false, //是否已经获取地理位置数据，成功之后再获取商铺列表信息
       imgBaseUrl: "https://fuss10.elemecdn.com", //图片域名地址
+     
     };
   },
   async beforeMount() {
@@ -315,4 +314,5 @@ p.theme {
     }
   }
 }
+
 </style>

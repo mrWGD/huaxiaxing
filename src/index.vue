@@ -22,7 +22,7 @@ export default {
       guessCityid: "", //当前城市id
       hotcity: [], //热门城市列表
       groupcity: {}, //所有城市列表
-      posterShow: true,
+      posterShow: false,
       time: 9,
     };
   },

@@ -72,6 +72,10 @@
         </li>
       </ul>
     </div>
+    <div class="link">
+      <b>友情链接</b>
+      <a :href="i.url" v-for="i in linkArr" :key="i.index">{{ i.text }}</a>
+    </div>
 
     <foot-guide></foot-guide>
   </div>
@@ -120,6 +124,32 @@ export default {
       searchHistory: [], // 搜索历史记录
       showHistory: true, // 是否显示历史记录，只有在返回搜索结果后隐藏
       emptyResult: false, // 搜索结果为空时显示
+      linkArr: [
+        {
+          text: "中国舞蹈家协会",
+          url: "https://www.cdanet.org/index",
+        },
+        {
+          text: "中国艺考网",
+          url: "http://www.yk211.com/ykzx/",
+        },
+        {
+          text: "中国文艺网",
+          url: "http://www.cflac.org.cn/",
+        },
+        {
+          text: "肚皮舞国际协会",
+          url: "http://www.imdpw.cn/",
+        },
+        {
+          text: "中国舞蹈教学网",
+          url: "http://www.danceinchina.org/",
+        },
+        {
+          text: "少儿艺术教育网",
+          url: "http://www.ccae.org.cn/",
+        },
+      ],
     };
   },
   created() {},
@@ -349,6 +379,29 @@ export default {
     span {
       color: #999;
     }
+  }
+}
+.link {
+  width: 100%;
+  height: 5rem;
+  background: #fff;
+  position: fixed;
+  bottom: 1rem;
+  text-align: center;
+  overflow: hidden;
+  b {
+    display: block;
+    color: #666;
+    @include font(0.55rem, 1rem);
+  }
+  a {
+    display: inline-block;
+    width: 4.3rem;
+    color: #999;
+    @include font(0.55rem, 1rem);
+  }
+  a:nth-child(0){
+      
   }
 }
 </style>

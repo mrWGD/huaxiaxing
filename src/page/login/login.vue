@@ -219,7 +219,7 @@ export default {
         if (!this.loginWay) this.getCaptchaCode();
       } else {
         this.RECORD_USERINFO(this.userInfo[0]);
-        this.$router.push("/msite");
+        this.$router.push("/home");
       }
     },
     closeTip() {
