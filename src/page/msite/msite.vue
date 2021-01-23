@@ -31,7 +31,7 @@
     </head-top>
     <div class="carousel">
       <el-carousel trigger="click" height="7.8rem">
-        <el-carousel-item v-for="item in carouselArr" :key="item">
+        <el-carousel-item v-for="item in carouselArr" :key="item.index">
           <img class="logo" :src="item.url" />
         </el-carousel-item>
       </el-carousel>
@@ -64,15 +64,21 @@
 
     <p class="theme">热门视频集锦</p>
       <iframe
+      class="iframe"
       width="100%"
       height="1050"
-      src="https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend"
+      :src="iframeUrl"
       scrolling="no"
-      　　frameborder="0"
+      frameborder="0"
       style="margin-left: 0px; margin-top: -38px"
     ></iframe>
-    
-    <foot-guide></foot-guide>
+
+    <foot-guide v-if="footShow"></foot-guide>
+    <i class="back" @click="backupClick">返回</i>
+    <i class="packup" @click="packupClick"
+      >{{ footShow ? "收起" : "显示" }}
+      <p>底部</p></i
+    >
   </div>
 </template>
 
@@ -148,7 +154,9 @@ export default {
       ], // 分类列表
       hasGetData: false, //是否已经获取地理位置数据，成功之后再获取商铺列表信息
       imgBaseUrl: "https://fuss10.elemecdn.com", //图片域名地址
-     
+      iframeUrl:
+        "https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend",
+      footShow: true,
     };
   },
   async beforeMount() {
@@ -211,6 +219,16 @@ export default {
       } else {
         return "";
       }
+    },
+    // 收起
+    backupClick() {
+      this.$router.go(0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    },
+    // 收起
+    packupClick() {
+      this.footShow = !this.footShow;
     },
   },
   watch: {},
@@ -314,5 +332,26 @@ p.theme {
     }
   }
 }
-
+.packup,
+.back {
+  position: fixed;
+  bottom: 3rem;
+  right: 1rem;
+  display: block;
+  @include wh(2rem, 2rem);
+  background: #000;
+  opacity: 0.6;
+  font-size: 12px;
+  line-height: 1rem;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  p {
+    color: #fff;
+  }
+}
+.back {
+  bottom: 6rem;
+  line-height: 2rem;
+}
 </style>

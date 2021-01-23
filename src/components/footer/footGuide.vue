@@ -83,7 +83,6 @@
     #foot_guide{
         background-color: #fff;
         position: fixed;
-        z-index: 100;
         left: 0;
         right: 0;
         bottom: 0;
