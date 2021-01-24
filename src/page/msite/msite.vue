@@ -61,8 +61,32 @@
         <!-- <div class="swiper-pagination"></div> -->
       </div>
     </nav>
+    <p class="theme" style="margin: 0rem 0 0.6rem">
+      <i
+        class="el-icon-video-camera-solid"
+        style="color: #0ff; margin-right: 0.1rem"
+      ></i
+      >最星MV集锦
+    </p>
+    <ul class="mv">
+      <li v-for="i in videoArr" :key="i.index">
+        <p><i>MV</i>{{ i.title }}</p>
+        <video-player
+          class="video-player"
+          ref="videoPlayer"
+          :playsinline="true"
+          :options="i.playerOptions"
+        ></video-player>
+      </li>
+    </ul>
 
-    <p class="theme">热门视频集锦</p>
+    <p class="theme">
+      <i
+        class="el-icon-magic-stick"
+        style="color: #f09; margin-right: 0.1rem"
+      ></i
+      >热门视频集锦
+    </p>
       <iframe
       class="iframe"
       width="100%"
@@ -154,6 +178,90 @@ export default {
       ], // 分类列表
       hasGetData: false, //是否已经获取地理位置数据，成功之后再获取商铺列表信息
       imgBaseUrl: "https://fuss10.elemecdn.com", //图片域名地址
+      videoArr: [
+        {
+          title: "【周世刚】国际舞台的中国民族特色",
+          playerOptions: {
+            playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
+            autoplay: true, //如果true,浏览器准备好时开始回放。
+            muted: false, // 默认情况下将会消除任何音频。
+            loop: false, // 导致视频一结束就重新开始。
+            preload: "auto",
+            language: "zh-CN",
+            aspectRatio: "16:9",
+            fluid: true,
+            sources: [
+              {
+                type: "video/ogg",
+                src: require("@/assets/zsg.ogg"),
+              },
+            ],
+            poster: "",
+            notSupportedMessage: "此视频暂无法播放，请稍后再试",
+            controlBar: {
+              timeDivider: true,
+              durationDisplay: true,
+              remainingTimeDisplay: false,
+              fullscreenToggle: true, //全屏按钮
+            },
+          },
+        },
+        {
+          title: "【肚皮舞融合风】华夏星学员户外show特色《如花》",
+          playerOptions: {
+            playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
+            autoplay: false, //如果true,浏览器准备好时开始回放。
+            muted: false, // 默认情况下将会消除任何音频。
+            loop: false, // 导致视频一结束就重新开始。
+            preload: "auto",
+            language: "zh-CN",
+            aspectRatio: "16:9",
+            fluid: true,
+            sources: [
+              {
+                type: "video/ogg",
+                src: require("@/assets/hxx1.ogg"),
+              },
+            ],
+            poster: require("@/assets/images/poster1.png"),
+            notSupportedMessage: "此视频暂无法播放，请稍后再试",
+            controlBar: {
+              timeDivider: true,
+              durationDisplay: true,
+              remainingTimeDisplay: false,
+              fullscreenToggle: true, //全屏按钮
+            },
+          },
+        },
+        {
+          title: "【街舞】华夏星元素少儿舞蹈-街舞开课啦",
+          playerOptions: {
+            playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
+            autoplay: false, //如果true,浏览器准备好时开始回放。
+            muted: false, // 默认情况下将会消除任何音频。
+            loop: false, // 导致视频一结束就重新开始。
+            preload: "auto",
+            language: "zh-CN",
+            aspectRatio: "16:9",
+            fluid: true,
+            sources: [
+              {
+                type: "video/ogg",
+                src: require("@/assets/hxx.ogg"),
+              },
+            ],
+            poster: "",
+            notSupportedMessage: "此视频暂无法播放，请稍后再试",
+            controlBar: {
+              timeDivider: true,
+              durationDisplay: true,
+              remainingTimeDisplay: false,
+              fullscreenToggle: true, //全屏按钮
+            },
+          },
+        },
+      ],
+
       iframeUrl:
         "https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend",
       footShow: true,
@@ -278,6 +386,26 @@ export default {
   }
   .fl_back {
     @include wh(100%, 100%);
+  }
+}
+.mv {
+  margin-bottom: 0.1rem;
+  li {
+    font: 600 16px/28px "微软雅黑";
+    background: #fff;
+    color: #000;
+    padding: 0 0.38rem;
+
+    i {
+      display: inline-block;
+      width: 30px;
+      height: 18px;
+      border: 1px solid #f00;
+      border-radius: 3px;
+      font: 600 12px "微软雅黑";
+      color: #666;
+      text-align: center;
+    }
   }
 }
 p.theme {

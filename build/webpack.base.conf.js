@@ -61,6 +61,11 @@ module.exports = {
         },
       },
       {
+        test: /\.(ogg|mp4)(\?.*)?$/,
+        loader: "url",
+       
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: "url-loader",
         query: {
