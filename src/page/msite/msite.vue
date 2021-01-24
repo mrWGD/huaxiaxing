@@ -192,8 +192,8 @@ export default {
             fluid: true,
             sources: [
               {
-                type: "video/ogg",
-                src: require("@/assets/zsg.ogg"),
+                type: "video/mp4",
+                src: require("@/assets/zsg.mp4"),
               },
             ],
             poster: "",
