@@ -76,6 +76,8 @@
           ref="videoPlayer"
           :playsinline="true"
           :options="i.playerOptions"
+          webkit-playsinline
+          x5-playsinline
         ></video-player>
       </li>
     </ul>
@@ -207,7 +209,7 @@ export default {
           },
         },
         {
-          title: "【肚皮舞融合风】华夏星学员户外show特色《如花》",
+          title: "【肚皮舞融合风】红花绽放，风情万种。华夏星学员户外show特色《咖啡屋》",
           playerOptions: {
             playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
             autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -223,7 +225,7 @@ export default {
                 src: require("@/assets/hxxvideo.mp4"),
               },
             ],
-            poster: require("@/assets/images/poster1.png"),
+            poster: '',
             notSupportedMessage: "此视频暂无法播放，请稍后再试",
             controlBar: {
               timeDivider: true,
@@ -247,7 +249,7 @@ export default {
             sources: [
               {
                 type: "video/mp4",
-                src: require("@/assets/hxxvideo.mp4"),
+                src: require("@/assets/hxxvideo1.mp4"),
               },
             ],
             poster: "",
