@@ -219,8 +219,8 @@ export default {
             fluid: true,
             sources: [
               {
-                type: "video/ogg",
-                src: require("@/assets/hxx1.ogg"),
+                type: "video/mp4",
+                src: require("@/assets/hxxvideo.mp4"),
               },
             ],
             poster: require("@/assets/images/poster1.png"),
@@ -246,8 +246,8 @@ export default {
             fluid: true,
             sources: [
               {
-                type: "video/ogg",
-                src: require("@/assets/hxx.ogg"),
+                type: "video/mp4",
+                src: require("@/assets/hxxvideo.mp4"),
               },
             ],
             poster: "",

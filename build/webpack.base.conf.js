@@ -63,7 +63,9 @@ module.exports = {
       {
         test: /\.(ogg|mp4)(\?.*)?$/,
         loader: "url",
-       
+        query: {
+          name: utils.assetsPath("video/[name].[ext]"),
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
