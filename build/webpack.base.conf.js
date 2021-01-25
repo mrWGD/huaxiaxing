@@ -67,6 +67,7 @@ module.exports = {
           name: utils.assetsPath("video/[name].[ext]"),
         },
       },
+   
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: "url-loader",

@@ -2,7 +2,7 @@ import App from "../App";
 import index from "@/index";
 import home from "@/page/home/home";
 import teacher from "@/components/teacher";
-
+import contact from "@/components/contact";
 
 const city = (r) =>
   require.ensure([], () => r(require("../page/city/city")), "city");
@@ -245,6 +245,11 @@ export default [
       {
         path: "/teacher",
         component: teacher,
+      },
+       //播放视频页
+       {
+        path: "/contact",
+        component: contact,
       },
 
       //特色商铺列表页

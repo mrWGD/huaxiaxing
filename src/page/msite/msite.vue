@@ -69,16 +69,9 @@
       >最星MV集锦
     </p>
     <ul class="mv">
-      <li v-for="i in videoArr" :key="i.index">
+      <li v-for="i in videoArr" :key="i.index" @click="playClick(i)">
         <p><i>MV</i>{{ i.title }}</p>
-        <video-player
-          class="video-player"
-          ref="videoPlayer"
-          :playsinline="true"
-          :options="i.playerOptions"
-          webkit-playsinline
-          x5-playsinline
-        ></video-player>
+        <img class="video" :src="i.url" />
       </li>
     </ul>
 
@@ -182,7 +175,9 @@ export default {
       imgBaseUrl: "https://fuss10.elemecdn.com", //图片域名地址
       videoArr: [
         {
+          id: "zsg",
           title: "【周世刚】国际舞台的中国民族特色",
+          url: require("@/assets/images/zsg.png"),
           playerOptions: {
             playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
             autoplay: true, //如果true,浏览器准备好时开始回放。
@@ -209,7 +204,10 @@ export default {
           },
         },
         {
-          title: "【肚皮舞融合风】红花绽放，风情万种。华夏星学员户外show特色《咖啡屋》",
+          id: "mv1",
+          title: "【古典舞】王斯斯带你走进柔情似水的古风世界",
+          url: require("@/assets/images/mv1.jpg"),
+
           playerOptions: {
             playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
             autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -222,10 +220,10 @@ export default {
             sources: [
               {
                 type: "video/mp4",
-                src: require("@/assets/hxxvideo.mp4"),
+                src: require("@/assets/mv1.mp4"),
               },
             ],
-            poster: '',
+            poster: "",
             notSupportedMessage: "此视频暂无法播放，请稍后再试",
             controlBar: {
               timeDivider: true,
@@ -236,7 +234,10 @@ export default {
           },
         },
         {
-          title: "【街舞】华夏星元素少儿舞蹈-街舞开课啦",
+          id: "mv2",
+          title: "【东方舞融合风】cici老师，风情万种尽显旗袍美",
+          url: require("@/assets/images/mv2.jpg"),
+
           playerOptions: {
             playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
             autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -249,7 +250,7 @@ export default {
             sources: [
               {
                 type: "video/mp4",
-                src: require("@/assets/hxxvideo1.mp4"),
+                src: require("@/assets/mv2.mp4"),
               },
             ],
             poster: "",
@@ -291,24 +292,7 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 2000);
-    //获取导航食品类型列表
-    msiteFoodTypes(this.geohash)
-      .then((res) => {
-        let resLength = res.length;
-        let resArr = [...res]; // 返回一个新的数组
-        let foodArr = [];
-        for (let i = 0, j = 0; i < resLength; i += 8, j++) {
-          foodArr[j] = resArr.splice(0, 8);
-        }
-        this.foodTypes = foodArr;
-      })
-      .then(() => {
-        //初始化swiper
-        new Swiper(".swiper-container", {
-          pagination: ".swiper-pagination",
-          loop: true,
-        });
-      });
+  
   },
   components: {
     headTop,
@@ -329,6 +313,9 @@ export default {
       } else {
         return "";
       }
+    },
+    playClick(i){
+      this.$router.push(`/contact?id=${i.id}`)
     },
     // 收起
     backupClick() {
@@ -409,6 +396,10 @@ export default {
       text-align: center;
     }
   }
+}
+.video {
+  display: inline-block;
+  width: 100%;
 }
 p.theme {
   width: 100%;
