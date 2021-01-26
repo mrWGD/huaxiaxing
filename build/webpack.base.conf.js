@@ -14,6 +14,13 @@ module.exports = {
   entry: {
     app: "./src/main.js",
   },
+  externals: {
+    vue: "Vue",
+    "vue-router": "VueRouter",
+    vuex: "Vuex",
+    "element-ui": "ElementUI",
+    "vue-video-player": "VideoPlayer",
+  },
   output: {
     path: config.build.assetsRoot,
     publicPath:
@@ -67,7 +74,7 @@ module.exports = {
           name: utils.assetsPath("video/[name].[ext]"),
         },
       },
-   
+
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: "url-loader",

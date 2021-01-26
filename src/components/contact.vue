@@ -9,6 +9,12 @@
       webkit-playsinline
       x5-playsinline
     ></video-player>
+    <video
+      class="video-player"
+      :src="playerOptions.sources[0].src"
+      controls="controls"
+      width="100%"
+    ></video>
   </div>
 </template>
 
@@ -61,7 +67,6 @@ export default {
 .contain {
   overflow: hidden;
 
-  
   .video-player {
     margin-top: 2.2rem;
   }
