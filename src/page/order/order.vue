@@ -29,7 +29,6 @@ import { imgBaseUrl } from "src/config/env";
 export default {
   data() {
     return {
-      orderList: null, //订单列表
       offset: 0,
       preventRepeat: false, //防止重复获取
       showLoading: false, //显示加载动画
