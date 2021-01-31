@@ -5,6 +5,17 @@
       <h3>开设课程</h3>
       <img :src="require('@/assets/images/class.png')" />
     </div>
+    <div class="courseTopics">
+      <h3>课程专题</h3>
+      <ul>
+        <li v-for="(i, index) in courseTopicsList" :key="index">
+          <img :src="i.imgurl" />
+          <p>
+            {{ i.text }}
+          </p>
+        </li>
+      </ul>
+    </div>
     <foot-guide></foot-guide>
     <transition name="loading">
       <loading v-show="showLoading"></loading>
@@ -29,7 +40,33 @@ import { imgBaseUrl } from "src/config/env";
 export default {
   data() {
     return {
-      offset: 0,
+      courseTopicsList: [
+        {
+          text:
+            "《东方舞名师团队，迎新内训》1.30-1.31周世刚老师技巧提升，李静老师融合Paris",
+          imgurl: require("@/assets/images/class1.jpg"),
+        },
+        {
+          text: "《春节集训》2.15-2.17 名师李静，与你共舞popsong",
+          imgurl: require("@/assets/images/class2.jpg"),
+        },
+        {
+          text: "《小牛领跑》2021 少儿舞蹈，寒假派对来袭",
+          imgurl: require("@/assets/images/class3.jpg"),
+        },
+        {
+          text: "《亲密爱人》签约东方舞名师cici的精品小班课已经开启",
+          imgurl: require("@/assets/images/class4.jpg"),
+        },
+        {
+          text: "《少儿街舞》街舞试听课已经为小伙伴们打开通道，快快来报名吧！",
+          imgurl: require("@/assets/images/class5.jpg"),
+        },
+        {
+          text: "《古典舞》12月的古典情，想美就来华夏星",
+          imgurl: require("@/assets/images/class6.jpg"),
+        },
+      ],
       preventRepeat: false, //防止重复获取
       showLoading: false, //显示加载动画
       imgBaseUrl,
@@ -104,81 +141,54 @@ export default {
   padding: 0 0.6rem;
   .open {
     padding-top: 2rem;
-    font: 600 13px/60px "";
-    text-align: center;
+    h3 {
+      font: 600 16px/60px "";
+      text-align: center;
+    }
+
     img {
       display: block;
       width: 100%;
     }
   }
-}
-.order_list_ul {
-  padding-top: 1.95rem;
-  .order_list_li {
-    background-color: #fff;
-    display: flex;
-    margin-bottom: 0.5rem;
-    padding: 0.6rem 0.6rem 0;
-    .restaurant_image {
-      @include wh(2rem, 2rem);
-      margin-right: 0.4rem;
-    }
-    .order_item_right {
-      flex: 5;
-      .order_item_right_header {
-        border-bottom: 0.025rem solid #f5f5f5;
-        padding-bottom: 0.3rem;
-        @include fj;
-        .order_header {
-          h4 {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            @include sc(0.75rem, #333);
-            line-height: 1rem;
-            width: 9rem;
+  .courseTopics {
+    margin-bottom: 2rem;
 
-            .arrow_right {
-              @include wh(0.4rem, 0.4rem);
-              fill: #ccc;
-              margin-right: 0.2rem;
-            }
-          }
-          .order_time {
-            @include sc(0.55rem, #999);
-            line-height: 0.8rem;
-          }
+    h3 {
+      font: 600 16px/60px "";
+      text-align: center;
+    }
+
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      li {
+        width: 7rem;
+        height: 12rem;
+        font: 400 12px/18px "";
+        border: 1px solid #999;
+        border-radius: 10px;
+        margin-bottom: 0.6rem;
+        text-align: left;
+
+        img {
+          display: block;
+          width: 7rem;
+          height: 9.6rem;
+          margin: 0 auto;
         }
-        .order_status {
-          @include sc(0.6rem, #333);
-        }
-      }
-      .order_basket {
-        @include fj;
-        line-height: 2rem;
-        border-bottom: 0.025rem solid #f5f5f5;
-        .order_name {
-          @include sc(0.6rem, #666);
-          width: 10rem;
-        }
-        .order_amount {
-          @include sc(0.6rem, #f60);
-          font-weight: bold;
-        }
-      }
-      .order_again {
-        text-align: right;
-        line-height: 1.6rem;
-        .buy_again {
-          @include sc(0.55rem, #3190e8);
-          border: 0.025rem solid #3190e8;
-          padding: 0.1rem 0.2rem;
-          border-radius: 0.15rem;
+
+        p {
+          color: #333;
         }
       }
     }
   }
 }
+
 .loading-enter-active,
 .loading-leave-active {
   transition: opacity 0.7s;
