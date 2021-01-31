@@ -61,6 +61,9 @@
         <!-- <div class="swiper-pagination"></div> -->
       </div>
     </nav>
+    <div class="free">
+      <p>新人<b>免费</b>体验课<a href="https://form.ebdan.net/ls/DCBvggnf">点击报名>></a></p>
+    </div>
     <p class="theme" style="margin: 0rem 0 0.6rem">
       <i
         class="el-icon-video-camera-solid"
@@ -292,7 +295,6 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 2000);
-  
   },
   components: {
     headTop,
@@ -314,8 +316,8 @@ export default {
         return "";
       }
     },
-    playClick(i){
-      this.$router.push(`/contact?id=${i.id}`)
+    playClick(i) {
+      this.$router.push(`/contact?id=${i.id}`);
     },
     // 收起
     backupClick() {
@@ -377,6 +379,27 @@ export default {
     @include wh(100%, 100%);
   }
 }
+.free {
+  width: 100%;
+  height: 3rem;
+  font: 800 18px/3rem '微软雅黑';
+  background-image: -webkit-linear-gradient(left, red, #f99, #ff0, );
+  color: #fff;
+
+  p {
+   margin-left: 2rem;
+   b {
+    font-size: 22px;
+    margin: 0 0.2rem;
+   }
+
+   a {
+    margin-left: 3rem;
+    color: #000;
+    font-size: 16px;
+   }
+  }
+ }
 .mv {
   margin-bottom: 0.1rem;
   li {

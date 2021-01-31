@@ -57,18 +57,29 @@
       </footer>
     </section>
     <div class="search_none" v-if="emptyResult">很抱歉！无搜索结果</div>
-    <div class="dynamicList">
+    <div class="information">
+      <h3><i class="el-icon-star-off"></i>星资讯</h3>
+      <ul>
+        <li v-for="(i, index) in zixunList" :key="index">
+          <p>
+            {{ i.text }}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="wiki">
+      <h3><i class="el-icon-star-off"></i>星百科</h3>
       <ul>
         <li
-          v-for="(item, index) in dynamicList"
+          v-for="(i, index) in baikeList"
           :key="index"
-          class="dynamic_list"
+          @click="rowClick(i.text)"
         >
+          <img :src="require('@/assets/images/logo1.png')" />
           <p>
-            <i class="el-icon-collection-tag"></i>
-            {{ item.text }}
+            {{ i.title }}
+            <b>阅读量 {{ i.readnum }}</b>
           </p>
-          <span>{{ item.date }}</span>
         </li>
       </ul>
     </div>
@@ -76,7 +87,19 @@
       <b>友情链接</b>
       <a :href="i.url" v-for="i in linkArr" :key="i.index">{{ i.text }}</a>
     </div>
-
+    <el-dialog
+      title="星百科"
+      :visible.sync="dialogVisible"
+      width="90%"
+      :before-close="handleClose"
+    >
+      <p v-for="j in text"  :key="j.index">{{j}}</p>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false"
+          >关  闭</el-button
+        >
+      </span>
+    </el-dialog>
     <foot-guide></foot-guide>
   </div>
 </template>
@@ -87,38 +110,25 @@ import footGuide from "../../components/footer/footGuide";
 import { searchRestaurant } from "../../service/getData";
 import { imgBaseUrl } from "../../config/env";
 import { getStore, setStore } from "../../config/mUtils";
+import newsData from "../../../news.json";
 
 export default {
   data() {
     return {
       geohash: "", // msite页面传递过来的地址信息
       searchValue: "", // 搜索内容
-      dynamicList: [
+      zixunList: [],
+      baikeList: [
         {
-          text: "埃及肚皮舞不得不看的小技巧分享",
-          date: "2021-01-20",
+          title: "【舞蹈知识】请了解造成舞蹈伤害的基本常识！",
+          text:
+            "关于舞蹈伤害的基本常识及造成舞蹈伤害的原因分述如下：	一、 解剖构造上的因素：每个人均有其身体结构上的条件限制， 其生理限制是影响技巧发展的因素， 若强迫超越其生理限制就容易受到伤害。 例如： 天生柔软度欠佳， 髋部外旋角度较小的学生， 就需要花较多的些时间加强练习， 以克服先天条件的限制， 亦可降低舞蹈伤害的机率。二、 技巧知识认知不足：	学生在学习舞蹈动作对其技巧的认知不足时， 易造成肌肉运用方式不正确而造成伤害， 因此学生上课的学习态度， 是影响其技巧学习与舞蹈伤害发生因素之一。	三、 不良的师资：	舞蹈教师若不了解学生能力的极限， 对学生要求的程度太高、 要求速度太快， 也是容易造成舞蹈伤害， 例如教师太早要求学生练习硬鞋芭蕾技巧就是一例。	四、 未应用正确的技巧：	学生为求技巧的表现， 而寻求不正确的方式达成其目的易导致受伤。 例如： 举腿、 踢腿时为达到较高的高度， 而忽略髋部与膝盖的正确位置， 不但未能学成技 巧更可能因此而造成舞蹈伤害。	一般因舞蹈伤害而产生的并发症包括心肺适能的减低、 体力的流失、 体重增加以及心理上的影响。 因此， 在受伤期间只要避免伤处的活动范围过大即可， 仍需保持一定的运动量以免心肺适能及体力的减低过多， 并且保持一定的肢体活动， 可促进身体的血液循环加强肌肉的代谢功能， 透过血液提供患处复原必要的细胞、 蛋白质、 矿物质等有助患处复原的速度。 其实舞蹈伤害的并发症不一定发生在每位患者身上， 需依其受伤程度、 部位而定， 重要的是建立正确的舞蹈伤害处理观念， 适时的休息、 复健才能确保患处的复原以及降低心理压力的产生。 ",
+          imgurl: require("@/assets/images/logo1.png"),
+          readnum: 909,
         },
-        {
-          text: "《关于全面加强和改进新时代学校美 育工作的意见》 ",
-          date: "2021-01-16",
-        },
-        {
-          text: "教育部关于印发《学校体育美育兼职教师管理办法》的通知 ",
-          date: "2021-01-13",
-        },
-        {
-          text: "在中国文联党组、中国舞协分党组的关心与支持",
-          date: "2021-01-12",
-        },
-        {
-          text: "中国舞协“深入生活、扎根人民”走进江西南… ",
-          date: "2021-01-10",
-        },
-        {
-          text: "华夏星元素，'小牛领跑'，寒假派对来袭",
-          date: "2021-01-01",
-        },
-      ], // 搜索返回的结果
+      ],
+      text: "",
+      dialogVisible: false,
       dynamicList1: [],
       imgBaseUrl, // 图片域名地址
       searchHistory: [], // 搜索历史记录
@@ -159,6 +169,8 @@ export default {
     if (getStore("searchHistory")) {
       this.searchHistory = JSON.parse(getStore("searchHistory"));
     }
+    this.zixunList = newsData.zixunList;
+    this.baikeList = newsData.baikeList;
     this.dynamicList1 = this.dynamicList;
   },
   components: {
@@ -218,6 +230,10 @@ export default {
     clearAllHistory() {
       this.searchHistory = [];
       setStore("searchHistory", this.searchHistory);
+    },
+    rowClick(text) {
+      this.text = text;
+      this.dialogVisible = true;
     },
   },
 };
@@ -357,27 +373,62 @@ export default {
   text-align: center;
   margin: 0.125rem;
 }
-.dynamicList {
-  padding-top: 1rem;
-  .dynamic_list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    @include font(0.6rem, 1.2rem);
-    margin-bottom: 0.3rem;
-    padding: 0 0.6rem;
+.information {
+  padding: 0.6rem;
 
-    background: #fff;
+  h3 {
+    font: 600 16px/32px "";
+  }
 
-    p {
-      width: 10rem;
-      overflow: hidden;
+  ul {
+    li {
+      font: 400 14px/20px "";
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 0.6rem;
+      padding: 0.6rem;
+
+      p {
+        background-image: -webkit-linear-gradient(left, red, #f90, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
-    i {
-      color: #f00;
-    }
-    span {
-      color: #999;
+  }
+}
+
+.wiki {
+  padding: 0 0.6rem;
+  margin-bottom: 6.6rem;
+
+  h3 {
+    font: 600 16px/32px "";
+  }
+
+  ul {
+    width: 100%;
+    li {
+      height: 7rem;
+      font: 400 14px/20px "";
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 0.6rem;
+      padding: 1rem 0.6rem;
+      img {
+        float: left;
+        width: 5rem;
+        height: 5rem;
+        margin-right: 0.6rem;
+      }
+      p {
+        float: left;
+        width: 7rem;
+        b {
+          display: block;
+          font: 400 14px/90px "";
+          color: #666;
+        }
+      }
     }
   }
 }
@@ -400,8 +451,7 @@ export default {
     color: #999;
     @include font(0.55rem, 1rem);
   }
-  a:nth-child(0){
-      
+  a:nth-child(0) {
   }
 }
 </style>
