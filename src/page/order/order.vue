@@ -16,6 +16,12 @@
         </li>
       </ul>
     </div>
+    <div class="classtable">
+      <h3>课程表</h3>
+
+      <img :src="require('@/assets/images/classtable.jpg')" />
+    </div>
+
     <foot-guide></foot-guide>
     <transition name="loading">
       <loading v-show="showLoading"></loading>
@@ -139,26 +145,21 @@ export default {
 .class_page {
   background-color: #fff;
   padding: 0 0.6rem;
+  h3 {
+    @include font(0.8rem, 3rem);
+    font-weight: 600;
+    text-align: center;
+  }
   .open {
     padding-top: 2rem;
-    h3 {
-      font: 600 16px/60px "";
-      text-align: center;
-    }
 
     img {
       display: block;
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
     }
   }
   .courseTopics {
-    margin-bottom: 2rem;
-
-    h3 {
-      font: 600 16px/60px "";
-      text-align: center;
-    }
-
     ul {
       width: 100%;
       display: flex;
@@ -168,23 +169,32 @@ export default {
       li {
         width: 7rem;
         height: 12rem;
-        font: 400 12px/18px "";
         border: 1px solid #999;
-        border-radius: 10px;
+        border-radius: 0px;
         margin-bottom: 0.6rem;
         text-align: left;
 
         img {
           display: block;
-          width: 7rem;
+          width: 6.9rem;
           height: 9.6rem;
           margin: 0 auto;
         }
 
         p {
+          @include font(0.55rem, 0.68rem);
           color: #333;
         }
       }
+    }
+  }
+  .classtable {
+    margin-bottom: 2rem;
+
+    img {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
     }
   }
 }

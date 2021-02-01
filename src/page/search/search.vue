@@ -8,6 +8,8 @@
         placeholder="请输入关键字"
         class="search_input"
         v-model="searchValue"
+        @focus="focus"
+        @blur="blur"
         @input="checkInput"
       />
       <input
@@ -93,10 +95,10 @@
       width="90%"
       :before-close="handleClose"
     >
-      <p v-for="j in text"  :key="j.index">{{j}}</p>
+      <p v-for="j in text" :key="j.index">{{ j }}</p>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false"
-          >关  闭</el-button
+          >关 闭</el-button
         >
       </span>
     </el-dialog>
@@ -129,10 +131,11 @@ export default {
       ],
       text: "",
       dialogVisible: false,
-      dynamicList1: [],
+      zixunList1: [],
+      baikeList1: [],
       imgBaseUrl, // 图片域名地址
       searchHistory: [], // 搜索历史记录
-      showHistory: true, // 是否显示历史记录，只有在返回搜索结果后隐藏
+      showHistory: false, // 是否显示历史记录，只有在返回搜索结果后隐藏
       emptyResult: false, // 搜索结果为空时显示
       linkArr: [
         {
@@ -171,13 +174,22 @@ export default {
     }
     this.zixunList = newsData.zixunList;
     this.baikeList = newsData.baikeList;
-    this.dynamicList1 = this.dynamicList;
+    this.zixunList1 = this.zixunList;
+    this.baikeList1 = this.baikeList;
   },
   components: {
     headTop,
     footGuide,
   },
   methods: {
+    // 聚焦显示历史记录
+    focus() {
+      this.showHistory = true;
+    },
+    blur() {
+      //隐藏历史记录
+      this.showHistory = false;
+    },
     //点击提交按钮，搜索结果并显示，同时将搜索内容存入历史记录
     async searchTarget(historyValue) {
       if (historyValue) {
@@ -185,13 +197,15 @@ export default {
       } else if (!this.searchValue) {
         return;
       }
-      //隐藏历史记录
-      this.showHistory = false;
+
       //获取搜索结果
-      this.dynamicList = this.dynamicList.filter((i) => {
+      this.zixunList = this.zixunList.filter((i) => {
         return i.text.includes(this.searchValue);
       });
-      this.emptyResult = !this.dynamicList.length;
+      this.baikeList = this.baikeList.filter((i) => {
+        return i.title.includes(this.searchValue);
+      });
+      this.emptyResult = !this.zixunList.length && !this.baikeList.length;
       /**
        * 点击搜索结果进入下一页面时进行判断是否已经有一样的历史记录
        * 如果没有则新增，如果有则不做重复储存，判断完成后进入下一页
@@ -216,8 +230,9 @@ export default {
     //搜索结束后，删除搜索内容直到为空时清空搜索结果，并显示历史记录
     checkInput() {
       if (this.searchValue === "") {
-        this.showHistory = true; //显示历史记录
-        this.dynamicList = this.dynamicList1; //清空搜索结果
+        //this.showHistory = false; //隐藏历史记录
+        this.zixunList = this.zixunList1;
+        this.baikeList = this.baikeList1; //清空搜索结果
         this.emptyResult = false; //隐藏搜索为空提示
       }
     },
@@ -373,16 +388,16 @@ export default {
   text-align: center;
   margin: 0.125rem;
 }
+h3 {
+  @include font(0.6rem, 1.8rem);
+  font-weight: 600;
+}
 .information {
   padding: 0.6rem;
 
-  h3 {
-    font: 600 16px/32px "";
-  }
-
   ul {
     li {
-      font: 400 14px/20px "";
+      @include font(0.6rem, 1rem);
       background: #fff;
       border-radius: 10px;
       margin-bottom: 0.6rem;
@@ -401,15 +416,11 @@ export default {
   padding: 0 0.6rem;
   margin-bottom: 6.6rem;
 
-  h3 {
-    font: 600 16px/32px "";
-  }
-
   ul {
     width: 100%;
     li {
       height: 7rem;
-      font: 400 14px/20px "";
+      @include font(0.6rem, 1rem);
       background: #fff;
       border-radius: 10px;
       margin-bottom: 0.6rem;
@@ -425,7 +436,7 @@ export default {
         width: 7rem;
         b {
           display: block;
-          font: 400 14px/90px "";
+          @include font(0.6rem, 3.8rem);
           color: #666;
         }
       }
