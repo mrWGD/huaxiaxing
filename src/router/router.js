@@ -3,6 +3,7 @@ import index from "@/index";
 import home from "@/page/home/home";
 import teacher from "@/components/teacher";
 import contact from "@/components/contact";
+import draw from "@/components/draw";
 
 const city = (r) =>
   require.ensure([], () => r(require("../page/city/city")), "city");
@@ -261,6 +262,11 @@ export default [
       {
         path: "/search/:geohash",
         component: search,
+      },
+       //抽奖页
+       {
+        path: "/draw",
+        component: draw,
       },
       //商铺详情页
       {

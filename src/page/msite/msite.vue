@@ -62,7 +62,11 @@
       </div>
     </nav>
     <div class="free">
-      <p>新人<b>免费</b>体验课<a href="https://form.ebdan.net/ls/DCBvggnf">点击报名>></a></p>
+      <p>
+        新人<b>免费</b>体验课<a href="https://form.ebdan.net/ls/DCBvggnf"
+          >点击报名>></a
+        >
+      </p>
     </div>
     <p class="theme" style="margin: 0rem 0 0.6rem">
       <i
@@ -101,6 +105,11 @@
       >{{ footShow ? "收起" : "显示" }}
       <p>底部</p></i
     >
+    <img
+      :src="require('@/assets/images/redbag.gif')"
+      class="redbag"
+      @click="redbagClick"
+    />
   </div>
 </template>
 
@@ -319,9 +328,9 @@ export default {
     playClick(i) {
       this.$router.push(`/contact?id=${i.id}`);
     },
-    // 收起
+    // 返回
     backupClick() {
-      this.$router.go(0);
+      //this.$router.go(0);
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     },
@@ -329,6 +338,11 @@ export default {
     packupClick() {
       this.footShow = !this.footShow;
     },
+    // 抽奖
+    redbagClick(){
+      this.$router.push(`/draw`);
+
+    }
   },
   watch: {},
 };
@@ -382,24 +396,24 @@ export default {
 .free {
   width: 100%;
   height: 3rem;
-  font: 800 18px/3rem '微软雅黑';
-  background-image: -webkit-linear-gradient(left, red, #f99, #ff0, );
+  font: 800 18px/3rem "微软雅黑";
+  background-image: -webkit-linear-gradient(left, red, #f99, #ff0);
   color: #fff;
 
   p {
-   margin-left: 2rem;
-   b {
-    font-size: 22px;
-    margin: 0 0.2rem;
-   }
+    margin-left: 2rem;
+    b {
+      font-size: 22px;
+      margin: 0 0.2rem;
+    }
 
-   a {
-    margin-left: 3rem;
-    color: #000;
-    font-size: 16px;
-   }
+    a {
+      margin-left: 3rem;
+      color: #000;
+      font-size: 16px;
+    }
   }
- }
+}
 .mv {
   margin-bottom: 0.1rem;
   li {
@@ -497,5 +511,13 @@ p.theme {
 .back {
   bottom: 6rem;
   line-height: 2rem;
+}
+.redbag{
+   position: fixed;
+  bottom: 0.3rem;
+  right: 6.8rem;
+  display: block;
+  @include wh(2.2rem, 2.2rem);
+  
 }
 </style>
