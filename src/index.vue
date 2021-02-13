@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" v-if="showMobile">
     <div v-if="posterShow">
       <img class="poster" src="./assets/images/poster.png" />
       <span class="time">{{ time }}s</span>
@@ -24,15 +24,18 @@ export default {
       groupcity: {}, //所有城市列表
       posterShow: false,
       time: 9,
+      showMobile: true,
     };
   },
-
+  created() {
+    this.isMobile();
+  },
   mounted() {
     this.timer = setInterval(() => {
       this.time--;
       if (this.time == 0) {
         clearInterval(this.timer);
-        this.posterShow = false
+        this.posterShow = false;
       }
     }, 1000);
   },
@@ -42,12 +45,27 @@ export default {
   computed: {},
 
   methods: {
+    // 判断设备是手机端还是pc端
+    isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      if (flag) {
+        this.showMobile = true;
+        // alert("手机端");
+      } else {
+        this.showMobile = false;
+        alert("pc端暂不支持访问，请在手机端访问");
+      }
+    },
     //点击图标刷新页面
     userLogin() {
       this.$router.push("/login");
     },
     go() {
-      this.$router.push("/home");
+      this.$router.push("/msite");
+
+      //  this.$router.push("/home");
     },
   },
 };

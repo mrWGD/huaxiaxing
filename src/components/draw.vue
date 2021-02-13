@@ -3,7 +3,7 @@
     <div class="wheel-wrapper">
       <div class="wheel-pointer" @click="onClickRotate">
         <p>
-          开始 <br />
+          点击 <br />
           抽奖
         </p>
       </div>
@@ -72,39 +72,39 @@ export default {
           code: "hxx01",
           icon: "https://picsum.photos/40?random=1",
           text: "一等奖",
-          name: "东方舞团课一节",
+          name: "年卡一张，原价￥1299，现价￥1099",
         },
 
         {
           code: "hxx02",
           icon: "https://picsum.photos/40?random=2",
           text: "二等奖",
-          name: "古典舞团课一节",
+          name: "团课会员卡一张，原价￥699，现价￥609",
         },
         {
           code: "hxx03",
           icon: "https://picsum.photos/40?random=3",
           text: "三等奖",
-          name: "少儿舞蹈任选一节",
+          name: "少儿舞蹈体验课一节",
         },
 
         {
           code: "hxx04",
           icon: "https://picsum.photos/40?random=4",
           text: "四等奖",
-          name: "9个积分",
+          name: "现金抵扣券60，满300可用",
         },
         {
           code: "hxx05",
           icon: "https://picsum.photos/40?random=5",
           text: "五等奖",
-          name: "现金抵扣券100",
+          name: "现金抵扣券30，满100可用",
         },
         {
           code: "hxx06",
           icon: "https://picsum.photos/40?random=6",
           text: "六等奖",
-          name: "继续加油",
+          name: "19个积分",
         },
       ],
       borderRadius: "60%",
@@ -196,8 +196,8 @@ export default {
   background: #f96;
 
   .wheel-wrapper {
-    width: 15rem;
-    height: 15rem;
+    width: 13.8rem;
+    height: 13.8rem;
     position: absolute;
     top: 35%;
     left: 50%;
@@ -211,7 +211,7 @@ export default {
     border-bottom-color: #f80;
     position: absolute;
     top: 70%;
-    left: 32%;
+    left: 30%;
     z-index: 0;
   }
 
@@ -221,19 +221,19 @@ export default {
     border: 1rem solid transparent;
     border-bottom-color: #fff;
     position: absolute;
-    top: 27%;
+    top: 25%;
     left: 43%;
     z-index: 9;
   }
 
   span {
-    font: 600 0.8rem/2rem "";
+    font: 600 0.6rem/1rem "";
     color: #fff;
   }
 
   .wheel-pointer {
-    width: 3.8rem;
-    height: 3.8rem;
+    width: 3.6rem;
+    height: 3.6rem;
     border-radius: 50%;
     background: #f80;
     border: 0.2rem solid #fff;
@@ -242,11 +242,11 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font: 600 0.8rem "";
+    font: 600 0.6rem "";
     z-index: 10;
 
     p {
-      margin-top: 0.6rem;
+      margin-top: 0.8rem;
     }
   }
 
@@ -282,8 +282,8 @@ export default {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 9rem;
-    height: 7rem;
+    width: 8rem;
+    height: 6rem;
   }
 
   .prize-item {
@@ -296,8 +296,8 @@ export default {
     text-align: center;
 
     .prize-name {
-      padding: 1rem 0;
-      font-size: 0.8rem;
+      padding: 0.8rem 0;
+      font-size: 0.6rem;
     }
 
     .prize-icon {

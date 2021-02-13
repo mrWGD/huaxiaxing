@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <head-top go-back="true" :head-title="title" v-if="$route.path.indexOf('teacher') !== -1"></head-top>
+    <head-top
+      go-back="true"
+      :head-title="title"
+      v-if="$route.path.indexOf('teacher') !== -1"
+    ></head-top>
     <ul>
       <li>
         <div class="left">
@@ -22,40 +26,34 @@
       </li>
       <li>
         <div class="left">
-          <img :src="require('@/assets/images/poster.png')" />
+          <img :src="require('@/assets/images/lijing.jpg')" />
           <b>李静</b>
           <i>(东方舞老师)</i>
         </div>
         <p class="right">
-          李静老师是中国少数男性东方舞者中的佼佼者，有肚皮舞“抒情王子”的称号！<br />
-          2016青岛BDZ国际肚皮舞嘉年华发起人 <br />
-          2015 BDC全球肚皮舞节特邀授课导师<br />
-          2015 YEBD雅拉埃及肚皮舞节特邀授课导师<br />
-          全国肚皮舞名师百人榜入围导师
+          2016年起曾多次师从北欧男神伊戈尔、Lisa、乌克兰名师维尼卡等国际、国内大师学习 <br />
+          2017年于北京进修学习 并于2017年北京新丝路国际东方舞大赛获得三项个人奖项<br />
+          2017年南京Red Queen国际东方舞大赛获得专业鼓舞舞亚军、职业东方舞组十佳。
         </p>
       </li>
+     
       <li>
         <div class="left">
-          <img :src="require('@/assets/images/qq.png')" />
-          <b>王熙熙</b>
-          <i>(瑜伽老师)</i>
-        </div>
-        <p class="right">
-          王熙熙老师是中国少数男性东方舞者中的佼佼者，有肚皮舞“抒情王子”的称号！<br />
-          2016青岛BDZ国际肚皮舞嘉年华发起人 <br />
-          2015 BDC全球肚皮舞节特邀授课导师<br />
-        </p>
-      </li>
-       <li>
-        <div class="left">
-          <img :src="require('@/assets/images/poster.png')" />
-          <b>Cici</b>
+          <img :src="require('@/assets/images/class4.jpg')" />
+          <b>CiCi</b>
           <i>(古典舞老师)</i>
         </div>
         <p class="right">
-          Cici老师是中国少数男性东方舞者中的佼佼者，有肚皮舞“抒情王子”的称号！<br />
-          2016青岛BDZ国际肚皮舞嘉年华发起人 <br />
-          2015 BDC全球肚皮舞节特邀授课导师<br />
+          CiCi，高级瑜伽培训师 国家一级裁判员 <br />
+          擅长芭蕾形体、纤体塑型、 Modelshow 等特色课程<br />
+          2015年西海岸国际肚皮舞艺术大赛冠军<br />
+          2015年中国海洋节艺术大赛东方舞组冠军<br />
+          2016年CCTV《梦想中国》青少年艺术大赛特邀评委嘉宾<br />
+          2016年首届BDZ国际肚皮舞大赛特邀嘉宾<br />
+          2017年尼罗杯-东方舞全国大赛最具魅力奖<br />
+          2017年全国全民健身操舞大赛特等奖<br />
+          2017年第二届中国国际东方舞嘉年华专业组亚军<br />
+          
         </p>
       </li>
       <li>

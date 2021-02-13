@@ -2,6 +2,12 @@ import App from "../App";
 import index from "@/index";
 import home from "@/page/home/home";
 import teacher from "@/components/teacher";
+import student from "@/components/student";
+import classpage from "@/components/class";
+import honor from "@/components/honor";
+import show from "@/components/show";
+import introduction from "@/components/introduction";
+import environment from "@/components/environment";
 import contact from "@/components/contact";
 import draw from "@/components/draw";
 
@@ -247,8 +253,38 @@ export default [
         path: "/teacher",
         component: teacher,
       },
-       //播放视频页
-       {
+      //学员风采页
+      {
+        path: "/student",
+        component: student,
+      }, 
+      //课堂瞬间页
+      {
+        path: "/class",
+        component: classpage,
+      }, 
+      //奖项荣誉页
+      {
+        path: "/honor",
+        component: honor,
+      },
+      //活动演出页
+      {
+        path: "/show",
+        component: show,
+      }, 
+      //校园简介页
+      {
+        path: "/introduction",
+        component: introduction,
+      }, 
+      //校园环境页
+      {
+        path: "/environment",
+        component: environment,
+      }, 
+      //播放视频页
+      {
         path: "/contact",
         component: contact,
       },
@@ -263,8 +299,8 @@ export default [
         path: "/search/:geohash",
         component: search,
       },
-       //抽奖页
-       {
+      //抽奖页
+      {
         path: "/draw",
         component: draw,
       },

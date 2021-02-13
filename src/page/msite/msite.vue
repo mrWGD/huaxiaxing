@@ -82,7 +82,7 @@
       </li>
     </ul>
 
-    <p class="theme">
+    <p :class="navBarFixed == true ? 'navBarWrap' : 'theme'">
       <i
         class="el-icon-magic-stick"
         style="color: #f09; margin-right: 0.1rem"
@@ -150,37 +150,37 @@ export default {
         {
           icon: "el-icon-view",
           title: "学员风采",
-          path: "/teacher",
+          path: "/student",
         },
         {
           icon: "el-icon-alarm-clock",
           title: "课堂瞬间",
-          path: "/teacher",
+          path: "/class",
         },
         {
           icon: "el-icon-trophy",
           title: "奖项荣誉",
-          path: "/teacher",
+          path: "/honor",
         },
         {
           icon: "el-icon-video-play",
           title: "活动演出",
-          path: "/teacher",
+          path: "/show",
         },
         {
           icon: "el-icon-chat-line-round",
           title: "校园简介",
-          path: "/teacher",
+          path: "/introduction",
         },
         {
           icon: "el-icon-school",
           title: "校园环境",
-          path: "/teacher",
+          path: "/environment",
         },
         {
           icon: "el-icon-phone-outline",
           title: "联系我们",
-          path: "/teacher",
+          path: "/service",
         },
       ], // 分类列表
       hasGetData: false, //是否已经获取地理位置数据，成功之后再获取商铺列表信息
@@ -276,7 +276,7 @@ export default {
           },
         },
       ],
-
+      navBarFixed: false,
       iframeUrl:
         "https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend",
       footShow: true,
@@ -304,6 +304,7 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 2000);
+    window.addEventListener("scroll", this.hidemenu); //监听滚动事件
   },
   components: {
     headTop,
@@ -339,10 +340,22 @@ export default {
       this.footShow = !this.footShow;
     },
     // 抽奖
-    redbagClick(){
+    redbagClick() {
       this.$router.push(`/draw`);
-
-    }
+    },
+    //实现吸顶效果
+    hidemenu() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      console.log(scrollTop);
+      if (scrollTop > 1280) {
+        this.navBarFixed = true;
+      } else {
+        this.navBarFixed = false;
+      }
+    },
   },
   watch: {},
 };
@@ -494,7 +507,7 @@ p.theme {
 .back {
   position: fixed;
   bottom: 3rem;
-  right: 1rem;
+  right: 0.2rem;
   display: block;
   @include wh(2rem, 2rem);
   background: #000;
@@ -512,12 +525,23 @@ p.theme {
   bottom: 6rem;
   line-height: 2rem;
 }
-.redbag{
-   position: fixed;
-  bottom: 0.3rem;
-  right: 6.8rem;
+.redbag {
+  position: fixed;
+  bottom: 6.6rem;
+  left: 0rem;
   display: block;
   @include wh(2.2rem, 2.2rem);
-  
+}
+
+.navBarWrap {
+  position: fixed;
+  top: 1.95rem;
+  z-index: 999;
+  width: 100%;
+  height: 2.2rem;
+  font: 600 16px/38px "微软雅黑";
+  text-align: center;
+  background: #fff;
+  color: #000;
 }
 </style>
