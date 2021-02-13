@@ -50,9 +50,7 @@
         <p>({{ name }})</p>
         <p>中奖码：{{ code }}</p>
         <p class="advice">建议您将中奖结果截图保存，以便于作为有效凭证</p>
-        <a
-          class="sure pop_select"
-          href="https://form.ebdan.net/ls/CaQIr9wu"
+        <a class="sure pop_select" href="https://form.ebdan.net/ls/CaQIr9wu"
           >已截图去登记</a
         >
       </div>
@@ -72,33 +70,33 @@ export default {
           code: "hxx01",
           icon: "https://picsum.photos/40?random=1",
           text: "一等奖",
-          name: "年卡一张，原价￥1299，现价￥1099",
+          name: "通卡年卡一张，原价￥2980，现价￥2680",
         },
 
         {
           code: "hxx02",
           icon: "https://picsum.photos/40?random=2",
           text: "二等奖",
-          name: "团课会员卡一张，原价￥699，现价￥609",
+          name: "半年卡一张，原价￥1800，现价￥1600",
         },
         {
           code: "hxx03",
           icon: "https://picsum.photos/40?random=3",
           text: "三等奖",
-          name: "少儿舞蹈体验课一节",
+          name: "基础入门课一期，原价￥499，现价￥399",
         },
 
         {
           code: "hxx04",
           icon: "https://picsum.photos/40?random=4",
           text: "四等奖",
-          name: "现金抵扣券60，满300可用",
+          name: "现金抵扣券300，满2000可用",
         },
         {
           code: "hxx05",
           icon: "https://picsum.photos/40?random=5",
           text: "五等奖",
-          name: "现金抵扣券30，满100可用",
+          name: "现金抵扣券100，满1000可用",
         },
         {
           code: "hxx06",
@@ -227,7 +225,7 @@ export default {
   }
 
   span {
-    font: 600 0.6rem/1rem "";
+    font-size: 0.6rem;
     color: #fff;
   }
 
@@ -242,7 +240,7 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font: 600 0.6rem "";
+    font-size: 0.6rem;
     z-index: 10;
 
     p {

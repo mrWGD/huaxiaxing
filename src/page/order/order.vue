@@ -47,6 +47,16 @@ export default {
   data() {
     return {
       courseTopicsList: [
+         {
+          text:
+            "《Mejance》2.15-2.17周世刚老师2021最新原创纱巾开场舞集训",
+          imgurl: require("@/assets/images/class7.jpg"),
+        },
+         {
+          text:
+            "《自作多情》2.12-2.13周世刚老师网络直播公益课",
+          imgurl: require("@/assets/images/class8.jpg"),
+        },
         {
           text:
             "《东方舞名师团队，迎新内训》1.30-1.31周世刚老师技巧提升，李静老师融合Paris",

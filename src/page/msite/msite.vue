@@ -350,7 +350,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       console.log(scrollTop);
-      if (scrollTop > 1280) {
+      if (scrollTop > 1260) {
         this.navBarFixed = true;
       } else {
         this.navBarFixed = false;
@@ -527,7 +527,7 @@ p.theme {
 }
 .redbag {
   position: fixed;
-  bottom: 6.6rem;
+  bottom: 2rem;
   left: 0rem;
   display: block;
   @include wh(2.2rem, 2.2rem);

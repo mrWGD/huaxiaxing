@@ -41,11 +41,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "src/style/mixin";
+
 .environment {
   padding: 1.95rem 0.3rem;
   h3 {
-    font: 600 0.8rem/1.6rem "";
-    color: #333;
+    @include sc(0.6rem, #333);
+    line-height: 1.2rem;
+    font-weight: 600;
   }
   img {
     display: block;

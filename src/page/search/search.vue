@@ -414,7 +414,7 @@ h3 {
 
 .wiki {
   padding: 0 0.6rem;
-  margin-bottom: 6.6rem;
+  margin-bottom: 1rem;
 
   ul {
     width: 100%;
@@ -447,8 +447,6 @@ h3 {
   width: 100%;
   height: 5rem;
   background: #fff;
-  position: fixed;
-  bottom: 1rem;
   text-align: center;
   overflow: hidden;
   b {

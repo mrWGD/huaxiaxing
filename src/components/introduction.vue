@@ -4,7 +4,7 @@
     <img :src="url" />
     <p>华夏星元素</p>
     <p>(全称"华夏星元素舞蹈.瑜伽综合艺术中心")</p>
-    <p>前身是"ZSG国际东方舞团",</p>
+    <p>前身是"ZSG国际东方舞",</p>
     <p>于2020年10月01日迁址青岛市市北区山东路138号，</p>
     <p>
       ZSG国际东方舞团始创于2010年，由周世刚老师亲手创办。
@@ -34,11 +34,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "src/style/mixin";
+
 .introduction {
   padding: 1.95rem 0.3rem;
   p {
-    font: 300 0.6rem/1.2rem "";
-    color: #333;
+    @include sc(0.6rem, #666);
+    line-height: 1.2rem;
     text-align: center;
   }
   img {

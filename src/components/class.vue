@@ -2,7 +2,7 @@
   <div class="class">
     <head-top head-title="课堂瞬间" go-back="true"></head-top>
     <h3>课堂图册</h3>
-    <img v-for="i in imgArr" :key="i.index" :src="i.url" lazy/>
+    <img v-for="i in imgArr" :key="i.index" :src="i.url" lazy />
   </div>
 </template>
 
@@ -14,10 +14,10 @@ export default {
     return {
       imgArr: [
         {
-          url:require("@/assets/images/class1.png"),
+          url: require("@/assets/images/class1.png"),
         },
-         {
-          url:require("@/assets/images/class2.png"),
+        {
+          url: require("@/assets/images/class2.png"),
         },
       ],
     };
@@ -32,16 +32,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "src/style/mixin";
+
 .class {
-  padding:1.95rem 0.3rem;
-  h3{
-      font:600 0.8rem/1.6rem '';
-      color: #333;
+  padding: 1.95rem 0.3rem;
+  h3 {
+    @include sc(0.6rem, #333);
+    line-height: 1.2rem;
+    font-weight: 600;
   }
-  img{
-      display: block;
-      width: 100%;
-      margin-bottom: 0.3rem;
+  img {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.3rem;
   }
 }
 </style>
