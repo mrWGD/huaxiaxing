@@ -9,12 +9,25 @@
       webkit-playsinline
       x5-playsinline
     ></video-player>
+
     <video
       class="video-player"
       :src="playerOptions.sources[0].src"
       controls="controls"
       width="100%"
     ></video>
+    <p>{{ title }}</p>
+    <div>
+      <iframe
+        class="iframe"
+        width="100%"
+        height="500"
+        src="https://m.eqxiu.com/s/Ea2U1mbK"
+        scrolling="no"
+        frameborder="0"
+        style="position: relative; top: 0.2rem;"
+      ></iframe>
+    </div>
   </div>
 </template>
 
@@ -36,7 +49,7 @@ export default {
         sources: [
           {
             type: "video/mp4",
-            src: require("@/assets/zsg.mp4"),
+            src: require("@/assets/mv.mp4"),
           },
         ],
         poster: "",
@@ -48,12 +61,14 @@ export default {
           fullscreenToggle: true, //全屏按钮
         },
       },
+      title: "",
     };
   },
   mounted() {
     this.playerOptions.sources[0].src = require("@/assets/" +
       this.$route.query.id +
       ".mp4");
+    this.title = this.$route.query.title;
   },
   components: {
     headTop,
@@ -66,9 +81,13 @@ export default {
 <style lang="scss" scoped>
 .contain {
   overflow: hidden;
-
+ 
   .video-player {
     margin-top: 2.2rem;
+    z-index: 99;
+  }
+  p {
+    font-size: 0.68rem;
   }
 }
 </style>

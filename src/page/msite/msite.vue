@@ -129,7 +129,7 @@ export default {
     return {
       loading: true,
       geohash: "", // city页面传递过来的地址geohash
-      msiteTitle: "请选择地址...", // msite页面头部标题
+      msiteTitle: "华夏星元素", //"请选择地址...", // msite页面头部标题
       carouselArr: [
         {
           url: require("@/assets/images/logo.png"),
@@ -138,7 +138,7 @@ export default {
           url: require("@/assets/images/IMG_16.jpg"),
         },
         {
-          url: require("@/assets/images/IMG_20.jpg"),
+          url: require("@/assets/images/IMG_30.jpg"),
         },
       ],
       navTypes: [
@@ -187,94 +187,26 @@ export default {
       imgBaseUrl: "https://fuss10.elemecdn.com", //图片域名地址
       videoArr: [
         {
-          id: "zsg",
+          id: "mv",
           title: "【周世刚】国际舞台的中国民族特色",
-          url: require("@/assets/images/zsg.png"),
-          playerOptions: {
-            playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
-            autoplay: true, //如果true,浏览器准备好时开始回放。
-            muted: false, // 默认情况下将会消除任何音频。
-            loop: false, // 导致视频一结束就重新开始。
-            preload: "auto",
-            language: "zh-CN",
-            aspectRatio: "16:9",
-            fluid: true,
-            sources: [
-              {
-                type: "video/mp4",
-                src: require("@/assets/zsg.mp4"),
-              },
-            ],
-            poster: "",
-            notSupportedMessage: "此视频暂无法播放，请稍后再试",
-            controlBar: {
-              timeDivider: true,
-              durationDisplay: true,
-              remainingTimeDisplay: false,
-              fullscreenToggle: true, //全屏按钮
-            },
-          },
+          url: require("@/assets/images/mv.jpg"),
         },
         {
+          id: "mv0",
+          title: "【李静】舞蹈课堂上的火辣传说",
+          url: require("@/assets/images/mv0.jpg"),
+        },
+         {
           id: "mv1",
-          title: "【古典舞】王斯斯带你走进柔情似水的古风世界",
+          title: "【东方舞融合风】cici老师，风情万种尽显旗袍美",
           url: require("@/assets/images/mv1.jpg"),
-
-          playerOptions: {
-            playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
-            autoplay: false, //如果true,浏览器准备好时开始回放。
-            muted: false, // 默认情况下将会消除任何音频。
-            loop: false, // 导致视频一结束就重新开始。
-            preload: "auto",
-            language: "zh-CN",
-            aspectRatio: "16:9",
-            fluid: true,
-            sources: [
-              {
-                type: "video/mp4",
-                src: require("@/assets/mv1.mp4"),
-              },
-            ],
-            poster: "",
-            notSupportedMessage: "此视频暂无法播放，请稍后再试",
-            controlBar: {
-              timeDivider: true,
-              durationDisplay: true,
-              remainingTimeDisplay: false,
-              fullscreenToggle: true, //全屏按钮
-            },
-          },
         },
         {
           id: "mv2",
-          title: "【东方舞融合风】cici老师，风情万种尽显旗袍美",
+          title: "【古典舞】王斯斯带你走进柔情似水的古风世界",
           url: require("@/assets/images/mv2.jpg"),
-
-          playerOptions: {
-            playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
-            autoplay: false, //如果true,浏览器准备好时开始回放。
-            muted: false, // 默认情况下将会消除任何音频。
-            loop: false, // 导致视频一结束就重新开始。
-            preload: "auto",
-            language: "zh-CN",
-            aspectRatio: "16:9",
-            fluid: true,
-            sources: [
-              {
-                type: "video/mp4",
-                src: require("@/assets/mv2.mp4"),
-              },
-            ],
-            poster: "",
-            notSupportedMessage: "此视频暂无法播放，请稍后再试",
-            controlBar: {
-              timeDivider: true,
-              durationDisplay: true,
-              remainingTimeDisplay: false,
-              fullscreenToggle: true, //全屏按钮
-            },
-          },
         },
+       
       ],
       navBarFixed: false,
       iframeUrl:
@@ -327,7 +259,7 @@ export default {
       }
     },
     playClick(i) {
-      this.$router.push(`/contact?id=${i.id}`);
+      this.$router.push(`/contact?id=${i.id}&title=${i.title}`);
     },
     // 返回
     backupClick() {

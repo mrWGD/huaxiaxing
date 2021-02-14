@@ -8,7 +8,7 @@
     <ul>
       <li>
         <div class="left">
-          <img :src="require('@/assets/images/background_img.jpg')" />
+          <img :src="require('@/assets/images/zsg3.jpg')" />
           <b>周世刚</b>
           <i>(校长)</i>
         </div>
@@ -41,7 +41,7 @@
         <div class="left">
           <img :src="require('@/assets/images/class4.jpg')" />
           <b>CiCi</b>
-          <i>(古典舞老师)</i>
+          <i>(东方舞老师)</i>
         </div>
         <p class="right">
           CiCi，高级瑜伽培训师 国家一级裁判员 <br />

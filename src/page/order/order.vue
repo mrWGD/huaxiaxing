@@ -50,12 +50,12 @@ export default {
          {
           text:
             "《Mejance》2.15-2.17周世刚老师2021最新原创纱巾开场舞集训",
-          imgurl: require("@/assets/images/class7.jpg"),
+          imgurl: require("@/assets/images/class.jpg"),
         },
          {
           text:
             "《自作多情》2.12-2.13周世刚老师网络直播公益课",
-          imgurl: require("@/assets/images/class8.jpg"),
+          imgurl: require("@/assets/images/class0.jpg"),
         },
         {
           text:

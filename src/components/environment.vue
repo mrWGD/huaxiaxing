@@ -22,12 +22,7 @@ export default {
         {
           url: require("@/assets/images/room2.jpg"),
         },
-        {
-          url: require("@/assets/images/IMG_17.jpg"),
-        },
-        {
-          url: require("@/assets/images/IMG_19.jpg"),
-        },
+        
       ],
     };
   },
