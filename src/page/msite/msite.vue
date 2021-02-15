@@ -206,7 +206,11 @@ export default {
           title: "【古典舞】王斯斯带你走进柔情似水的古风世界",
           url: require("@/assets/images/mv2.jpg"),
         },
-       
+       {
+          id: "mv3",
+          title: "【户外美】Lily户外热舞为你展现成熟的魅力",
+          url: require("@/assets/images/mv3.jpg"),
+        },
       ],
       navBarFixed: false,
       iframeUrl:
@@ -282,7 +286,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       console.log(scrollTop);
-      if (scrollTop > 1260) {
+      if (scrollTop > 1710) {
         this.navBarFixed = true;
       } else {
         this.navBarFixed = false;

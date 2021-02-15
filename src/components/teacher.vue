@@ -21,7 +21,7 @@
           华东地区首位男性肚皮舞老师；<br />
           青岛健美操会肚皮舞委员会副主任；<br />
           2013、2014中国国际海洋节艺术大赛 专业组金奖兼优秀指导教师； <br />
-          CCTV-5首届全国肚皮舞电视大赛率领“炫舞东方”舞团在12强决赛中获得土耳其风格组冠军
+          CCTV-5首届全国肚皮舞电视大赛率领“炫舞东方”舞团在决赛中获得土耳其风格组冠军
         </p>
       </li>
       <li>
@@ -39,7 +39,7 @@
      
       <li>
         <div class="left">
-          <img :src="require('@/assets/images/class4.jpg')" />
+          <img :src="require('@/assets/images/cici.jpg')" />
           <b>CiCi</b>
           <i>(东方舞老师)</i>
         </div>

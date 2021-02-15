@@ -199,7 +199,7 @@ export default {
     }
   }
   .classtable {
-    margin-bottom: 2rem;
+    padding-bottom: 3.6rem;
 
     img {
       display: block;
