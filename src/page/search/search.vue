@@ -461,8 +461,7 @@ h3 {
   height: 5rem;
   background: #fff;
   text-align: center;
-  overflow: hidden;
-  padding-bottom: 3rem;
+  padding-bottom:6rem;
   b {
     display: block;
     color: #666;

@@ -28,6 +28,17 @@
       />
       <p>扫一扫添加客服微信</p>
     </div>
+    <div>
+         <iframe
+        class="iframe"
+        width="100%"
+        height="600"
+        src='https://map.baidu.com/search/%E5%8D%8E%E5%A4%8F%E6%98%9F%E5%85%83%E7%B4%A0%E8%88%9E%E8%B9%88.%E7%91%9C%E4%BC%BD%E7%BB%BC%E5%90%88%E8%89%BA%E6%9C%AF%E4%B8%AD%E5%BF%83/@13400722.095,4289073.4,19z?querytype=inf&uid=66f3f3a653df81592fb96d45&wd=%E5%8D%8E%E5%A4%8F%E6%98%9F%E5%85%83%E7%B4%A0%E8%88%9E%E8%B9%88.%E7%91%9C%E4%BC%BD%E7%BB%BC%E5%90%88%E8%89%BA%E6%9C%AF%E4%B8%AD%E5%BF%83&all=1&c=236&provider=pc-aladin&da_src=shareurl'
+        scrolling=""
+        frameborder="0"
+        style="margin-bottom:0"
+      ></iframe>
+    </div>
     <section class="hot_questions" v-if="serviceData1">
       <h4 class="qustion_header">热门问题</h4>
       <ul>

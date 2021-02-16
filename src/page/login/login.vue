@@ -35,16 +35,16 @@
     </form>
     <form class="loginForm" v-else>
       <section class="input_container">
-        <input type="text" placeholder="会员姓名" v-model.lazy="userName" />
+        <input type="text" placeholder="请输入会员姓名" v-model.lazy="userName" />
       </section>
       <section class="input_container">
         <input
           v-if="!showPassword"
           type="password"
-          placeholder="会员手机号"
+          placeholder="请输入会员手机号"
           v-model="phone"
         />
-        <input v-else type="text" placeholder="会员手机号" v-model="phone" />
+        <input v-else type="text" placeholder="请输入会员手机号" v-model="phone" />
         <div class="button_switch" :class="{ change_to_text: showPassword }">
           <div
             class="circle_button"
@@ -266,7 +266,7 @@ export default {
       border-radius: 0.15rem;
     }
     .right_phone_number {
-      background-color: #4cd964;
+      background-color: #3b95e9;
     }
   }
   .phone_number {
@@ -348,7 +348,7 @@ export default {
   }
 }
 .change_to_text {
-  background-color: #4cd964;
+  background-color: #3b95e9;
 }
 .to_forget {
   float: right;
