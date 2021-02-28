@@ -329,18 +329,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapMutations(["RECORD_ADDRESS", "SAVE_GEOHASH"]),
-    // 解码url地址，求去restaurant_category_id值
-    getCategoryId(url) {
-      let urlData = decodeURIComponent(
-        url.split("=")[1].replace("&target_name", "")
-      );
-      if (/restaurant_category_id/gi.test(urlData)) {
-        return JSON.parse(urlData).restaurant_category_id.id;
-      } else {
-        return "";
-      }
-    },
+    
     // 播放
     playClick(i) {
       this.$router.push(`/contact?id=${i.id}&title=${i.title}&type=${i.type}`);
@@ -357,7 +346,7 @@ export default {
       this.dialogVisible = true;
     },
     // 已付款
-    payClick() {
+    payClick() { 
       this.payShow = false;
       this.title = "添加客服";
       this.codeUrl = require("@/assets/images/servicecode.png");
