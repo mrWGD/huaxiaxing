@@ -304,7 +304,7 @@ export default {
     } else {
       this.geohash = this.$route.query.geohash;
     }
-    //保存geohash 到vuex
+    //保存geohash到vuex
     this.SAVE_GEOHASH(this.geohash);
     //获取位置信息
     let res = await msiteAddress(this.geohash);
