@@ -329,7 +329,6 @@ export default {
   },
   computed: {},
   methods: {
-    
     // 播放
     playClick(i) {
       this.$router.push(`/contact?id=${i.id}&title=${i.title}&type=${i.type}`);
