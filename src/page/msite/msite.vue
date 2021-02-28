@@ -81,8 +81,52 @@
         <img class="video" :src="i.url" />
       </li>
     </ul>
+    <p class="theme" style="margin: 0rem 0 0.6rem">
+      <i
+        class="el-icon-shopping-cart-2"
+        style="color: #f00; margin-right: 0.1rem"
+      ></i
+      >超值课程抢购
+    </p>
+    <ul class="buy">
+      <li v-for="i in buyArr" :key="i.index">
+        <img class="video" :src="i.url" @click="playClick(i)" />
+        <p>{{ i.title }}</p>
+        <div class="price">
+          <i class="newprice">￥{{ i.newprice }}</i>
+          <i class="oldprice">￥{{ i.oldprice }}</i>
+          <button class="buyBtn" @click="buyClick(i.newprice)">立即抢购</button>
+        </div>
+        <b class="try" @click="playClick(i)"
+          ><i class="el-icon-video-play"></i>免费试看</b
+        >
+        <el-dialog
+          :title="title"
+          :visible.sync="dialogVisible"
+          :close-on-click-modal="false"
+          :center="true"
+          :show-close="false"
+          width="66%"
+        >
+          <img class="paycode" :src="codeUrl" />
+          <p style="text-align: center">长按二维码识别</p>
+          <p v-if="!payShow" style="text-align: center">扫一扫添加客服微信</p>
+          <p v-if="!payShow" style="text-align: center">
+            核实订单信息，领取课程资料
+          </p>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">{{
+              payShow ? "取消" : "已添加"
+            }}</el-button>
+            <el-button type="primary" @click="payClick" v-if="payShow"
+              >已付款</el-button
+            >
+          </span>
+        </el-dialog>
+      </li>
+    </ul>
 
-    <p :class="navBarFixed == true ? 'navBarWrap' : 'theme'">
+    <!-- <p :class="navBarFixed == true ? 'navBarWrap' : 'theme'">
       <i
         class="el-icon-magic-stick"
         style="color: #f09; margin-right: 0.1rem"
@@ -97,7 +141,7 @@
       scrolling="no"
       frameborder="0"
       style="margin-left: 0px; margin-top: -38px"
-    ></iframe>
+    ></iframe> -->
 
     <foot-guide v-if="footShow"></foot-guide>
     <i class="back" @click="backupClick">返回</i>
@@ -190,28 +234,63 @@ export default {
           id: "mv",
           title: "【周世刚】国际舞台的中国民族特色",
           url: require("@/assets/images/mv.jpg"),
+          type: "MV",
         },
         {
           id: "mv0",
           title: "【李静】舞蹈课堂上的火辣传说",
           url: require("@/assets/images/mv0.jpg"),
+          type: "MV",
         },
-         {
+        {
           id: "mv1",
           title: "【东方舞融合风】cici老师，风情万种尽显旗袍美",
           url: require("@/assets/images/mv1.jpg"),
+          type: "MV",
         },
         {
           id: "mv2",
           title: "【古典舞】王斯斯带你走进柔情似水的古风世界",
           url: require("@/assets/images/mv2.jpg"),
+          type: "MV",
         },
-       {
+        {
           id: "mv3",
           title: "【户外美】Lily户外热舞为你展现成熟的魅力",
           url: require("@/assets/images/mv3.jpg"),
+          type: "MV",
         },
       ],
+      buyArr: [
+        {
+          id: "dyht",
+          title: "【大鱼海棠】国风特色融合分解课程",
+          url: require("@/assets/images/dyht.png"),
+          oldprice: 199,
+          newprice: 99,
+          type: "免费试看",
+        },
+        {
+          id: "zzdq",
+          title: "【自作多情】港风融合东方舞分解课程",
+          url: require("@/assets/images/zzdq.png"),
+          oldprice: 189,
+          newprice: 99,
+          type: "免费试看",
+        },
+        {
+          id: "hyj",
+          title: "【红颜旧】原创融合分解课程",
+          url: require("@/assets/images/hyj.jpg"),
+          oldprice: 169,
+          newprice: 69,
+          type: "免费试看",
+        },
+      ],
+      dialogVisible: false,
+      title: "扫码付款",
+      codeUrl: require("@/assets/images/paycode.png"),
+      payShow: true,
       navBarFixed: false,
       iframeUrl:
         "https://m.dance365.com/moment-list-by-classification?classificationType=information&channel_id=recommend",
@@ -262,8 +341,26 @@ export default {
         return "";
       }
     },
+    // 播放
     playClick(i) {
-      this.$router.push(`/contact?id=${i.id}&title=${i.title}`);
+      this.$router.push(`/contact?id=${i.id}&title=${i.title}&type=${i.type}`);
+    },
+    // 抢购
+    buyClick(newprice) {
+      this.payShow = true;
+      this.title = "扫码付款";
+      if (newprice == 69) {
+        this.codeUrl = require("@/assets/images/paycode.png");
+      } else if (newprice == 99) {
+        this.codeUrl = require("@/assets/images/paycode1.png");
+      }
+      this.dialogVisible = true;
+    },
+    // 已付款
+    payClick() {
+      this.payShow = false;
+      this.title = "添加客服";
+      this.codeUrl = require("@/assets/images/servicecode.png");
     },
     // 返回
     backupClick() {
@@ -286,7 +383,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       console.log(scrollTop);
-      if (scrollTop > 1710) {
+      if (scrollTop > 180) {
         this.navBarFixed = true;
       } else {
         this.navBarFixed = false;
@@ -383,6 +480,67 @@ export default {
     }
   }
 }
+.buy {
+  margin-bottom: 6rem;
+
+  overflow: hidden;
+  li {
+    font: 600 16px/28px "微软雅黑";
+    background: #fff;
+    color: #000;
+    padding: 0.3rem 0.38rem;
+    position: relative;
+    img {
+      display: block;
+      width: 100%;
+      height: 8rem;
+      margin: auto;
+    }
+    .price {
+      overflow: hidden;
+      .newprice {
+        float: left;
+        font: 600 26px "微软雅黑";
+        color: #f00;
+        margin: 0 0.3rem;
+      }
+      .oldprice {
+        float: left;
+        font: 400 16px/43px "微软雅黑";
+        color: #666;
+        text-decoration: line-through;
+      }
+      .buyBtn {
+        float: right;
+        margin-right: 2rem;
+        width: 2.6rem;
+        height: 1.2rem;
+        font: 400 12px/1.2rem "微软雅黑";
+        background: #f80;
+        color: #fff;
+      }
+    }
+    .try {
+      position: absolute;
+      top: 34%;
+      left: 43%;
+      width: 3rem;
+      height: 1.2rem;
+      font: 400 13px/1.2rem "微软雅黑";
+      background: #000;
+      color: #fff;
+      text-align: center;
+      opacity: 0.8;
+    }
+    .paycode {
+      display: block;
+      width: 3.9rem;
+      height: 3.9rem;
+      margin: auto;
+    }
+  }
+}
+
 .video {
   display: inline-block;
   width: 100%;

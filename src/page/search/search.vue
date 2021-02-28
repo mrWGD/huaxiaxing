@@ -63,9 +63,7 @@
       <h3>星资讯</h3>
       <ul>
         <li v-for="(i, index) in zixunList" :key="index">
-          <p>
-           <i class="el-icon-star-off" v-if="i.new"></i> {{ i.text }} 
-          </p>
+          <p><i class="el-icon-star-off" v-if="i.new"></i> {{ i.text }}</p>
         </li>
       </ul>
     </div>
@@ -85,7 +83,7 @@
         </li>
       </ul>
     </div>
-      <div>
+    <!-- <div>
       <iframe
         class="iframe"
         width="100%"
@@ -93,9 +91,9 @@
         src="https://m.baidu.com/sf?openapi=1&alr=1&dspName=iphone&dsp=iphone&from_sf=1&pd=songlist&resource_id=5020&word=%E6%8A%96%E9%9F%B3%E9%9F%B3%E4%B9%90%E6%8E%92%E8%A1%8C%E6%A6%9C&title=%E9%9F%B3%E4%B9%90%E6%A6%9C&real_src_id=5179&fxq_song_key=%E6%8A%96%E9%9F%B3&frsrcid=5179&frorder=1&lid=10390305022934193884&referlid=10390305022934193884&ms=1&frsrcid=5179&frorder=1"
         scrolling=""
         frameborder="0"
-        style="margin-bottom:0"
+        style="margin-bottom: 0"
       ></iframe>
-    </div>
+    </div> -->
     <div class="link">
       <b>友情链接</b>
       <a :href="i.url" v-for="i in linkArr" :key="i.index">{{ i.text }}</a>
@@ -461,7 +459,7 @@ h3 {
   height: 5rem;
   background: #fff;
   text-align: center;
-  padding-bottom:6rem;
+  padding-bottom: 6rem;
   b {
     display: block;
     color: #666;
@@ -473,6 +471,5 @@ h3 {
     color: #999;
     @include font(0.55rem, 1rem);
   }
- 
 }
 </style>

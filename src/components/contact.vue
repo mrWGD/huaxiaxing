@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <head-top head-title="MV" go-back="true" class="head-top"></head-top>
+    <head-top :head-title="htitle" go-back="true" class="head-top"></head-top>
     <video-player
       class="video-player"
       ref="videoPlayer"
@@ -17,7 +17,7 @@
       width="100%"
     ></video>
     <p>{{ title }}</p>
-    <div>
+    <div v-if="htitle == 'MV'">
       <iframe
         class="iframe"
         width="100%"
@@ -37,6 +37,7 @@ import headTop from "src/components/header/head";
 export default {
   data() {
     return {
+      htitle:'',
       playerOptions: {
         playbackRates: [0.5, 1.0, 1.5, 2.0], //播放速度
         autoplay: true, //如果true,浏览器准备好时开始回放。
@@ -65,6 +66,8 @@ export default {
     };
   },
   mounted() {
+        this.htitle = this.$route.query.type;
+
     this.playerOptions.sources[0].src = require("@/assets/" +
       this.$route.query.id +
       ".mp4");
